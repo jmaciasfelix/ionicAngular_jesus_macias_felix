@@ -33,4 +33,9 @@ Se tendrá en cuenta lo siguiente de cara a la evaluación:
 - Resolución de los ejercicios propuestos.
 - Calidad del código, originalidad y estilo de programación.
 - Gestión del repositorio.
-- Resolución del examen final.
+- Resolución del examen final. **24/09/2020**
+
+## Entregas de Ejercicios ##
+
+- 20/09/20 Ejercicios primera semana
+- 27/09/20 Ejercicios segunda semana
