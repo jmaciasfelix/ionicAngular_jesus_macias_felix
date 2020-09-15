@@ -1,13 +1,11 @@
-const users = require('./users.json');
+const users = require("./users.json");
 
 //
 // TODO 1
 // Obtener el usuario cuyo teléfono es "024-648-3804"
 //
 
-console.log('=== 1 ===');
-
-
+console.log("=== 1 ===");
 
 //
 // TODO 2
@@ -15,21 +13,24 @@ console.log('=== 1 ===');
 // sea el que se pasa como parámetro
 //
 
-console.log('=== 2 ===');
+console.log("=== 2 ===");
+/**
+ *
+ * @param {string} email Email de un usuario
+ */
+const existsUser = (email) => {
+  return users.some((user) => user.email === email);
+};
 
-const existsUser = email => false; // TODO en vez de false, debe devolver el resultado
-
-console.log(existsUser('Nathan@yesenia.net')); // true
-console.log(existsUser('japostigo@atsistemas.com')); // false
+console.log(existsUser("Nathan@yesenia.net")); // true
+console.log(existsUser("japostigo@atsistemas.com")); // false
 
 //
 // TODO 3
 // Obtener el número de usuarios que tienen website
 //
 
-console.log('=== 3 ===');
-
-
+console.log("=== 3 ===");
 
 //
 // TODO 4
@@ -37,18 +38,14 @@ console.log('=== 3 ===');
 // cuyo número de la calle de su dirección es menor que 300
 //
 
-console.log('=== 4 ===');
-
-
+console.log("=== 4 ===");
 
 //
 // TODO 5
 // Obtener un array que sólo contenga las cadenas de los emails de los usuarios
 //
 
-console.log('=== 5 ===');
-
-
+console.log("=== 5 ===");
 
 //
 // TODO 6
@@ -56,9 +53,7 @@ console.log('=== 5 ===');
 // que contienen los ids y los nombres de usuarios de los usuarios
 //
 
-console.log('=== 6 ===');
-
-
+console.log("=== 6 ===");
 
 //
 // TODO 7
@@ -66,9 +61,7 @@ console.log('=== 6 ===');
 // formato de número (y no de cadena que es como está ahora mismo)
 //
 
-console.log('=== 7 ===');
-
-
+console.log("=== 7 ===");
 
 //
 // TODO 8
@@ -76,9 +69,7 @@ console.log('=== 7 ===');
 // latitud -50 y 50, y la longitud -100 y 100
 //
 
-console.log('=== 8 ===');
-
-
+console.log("=== 8 ===");
 
 //
 // TODO 9
@@ -86,9 +77,7 @@ console.log('=== 8 ===');
 // pertenezca a un dominio biz
 //
 
-console.log('=== 9 ===');
-
-
+console.log("=== 9 ===");
 
 //
 // TODO 10
@@ -99,7 +88,7 @@ console.log('=== 9 ===');
 // ;)
 //
 
-console.log('=== 10 ===');
+console.log("=== 10 ===");
 
 const testArray = [2, 3, 5, 6, 5, 9, 10, 12, 13];
 
