@@ -84,6 +84,13 @@ console.log(usuarios)
 
 console.log("=== 7 ===");
 
+let numberAddressUsers = [];
+users.forEach(({ address }) => {
+  address && numberAddressUsers.push(parseInt(address.number, 10));
+});
+console.log("Numero de direcciones de los usuarios en formato numero");
+console.log(numberAddressUsers);
+
 //
 // TODO 8
 // Obtener el array de usuarios cuya dirección está ubicada entre la
