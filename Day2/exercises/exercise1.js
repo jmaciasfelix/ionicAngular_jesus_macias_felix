@@ -99,6 +99,35 @@ console.log(numberAddressUsers);
 
 console.log("=== 8 ===");
 
+/**
+ * 
+ * @param {string} lng Longitud de la dirección del usuario.
+ * @param {number} lowLng  Cota inferior de la longitud, por defecto es -100
+ * @param {number} highLng Cota superior de la longitud, por defecto es 100
+ */
+function checkLongitud({ lng }, lowLng = -100, highLng = 100) {
+    const lngInt = parseInt(lng,10)
+    return((lowLng<lngInt)&&(lngInt<highLng))
+}
+/**
+ * 
+ * @param {string} lat Latitud de la dirección del usuario. 
+ * @param {number} lowlat Cota inferior de la latitud, por defecto es -50
+ * @param {number} highLat Cota superior de la latitud, por defecto es 50
+ */
+function checkLatitud({ lat }, lowlat = -50, highLat = 50) {
+    const latInt = parseInt(lat,10)
+    return((lowlat<latInt)&&(latInt<highLat))
+}
+
+console.log(
+  "Usuarios cuya dirección está ubicada entre la latitud -50 y 50, y la longitud -100 y 100 "
+);
+
+const usersLatLong = users.filter(({address})=>address!==undefined && checkLatitud(address.geo) && checkLongitud(address.geo))
+
+console.log(usersLatLong);
+
 //
 // TODO 9
 // Obtener un array con los teléfonos de los usuarios cuyo website
