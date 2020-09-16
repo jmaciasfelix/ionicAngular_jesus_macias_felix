@@ -59,7 +59,11 @@ console.log(`Numero del indice ${indexUser} del usuario cuyo numero de la calle 
 // Obtener un array que sólo contenga las cadenas de los emails de los usuarios
 //
 
-console.log("=== 5 ===");
+console.log('=== 5 ===');
+
+const emailsUsers = users.map(({email})=>(email))
+console.log("Array con los emails de los usuarios ");
+console.log(emailsUsers)
 
 //
 // TODO 6
