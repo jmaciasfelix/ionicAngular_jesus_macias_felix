@@ -23,6 +23,39 @@ var p = new Person('Posti', 34);
 p.haveABirthday();
 p.greet();
 
+/* Solution */
+/**
+ * Esta clase representa un objeto Persona.
+ */
+class Persona{
+  /**
+   * Contructor del objeto Persona.
+   * @param {string} name Nombre de la persona.
+   * @param {string} age Edad de la persona.
+   */
+  constructor(name, age){
+    this._name=name;
+    this._age=age;
+  }
+  /**
+   * Imprime por pantalla un saludo.
+   */
+  greet(){
+    console.log('Hi, my name is ' + this._name + ' and I\'m ' + this._age + ' years old.');
+  }
+  /**
+   * Aumenta la edad de la persona en uno.
+   */
+  haveABirthday(){
+    this._age++;
+  }
+}
+
+var p = new Person('Posti', 34);
+
+p.haveABirthday();
+p.greet();
+
 //
 // TODO 2
 // Crear un modulo que contenga una clase coche con dos atributos: make y km.
