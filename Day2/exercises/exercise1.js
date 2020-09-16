@@ -154,6 +154,14 @@ console.log("=== 10 ===");
 
 const testArray = [2, 3, 5, 6, 5, 9, 10, 12, 13];
 
-const processArray = (a) => [];
-
+//const processArray = (a) => [];
+/*
+  const processArray = (a) => a.map((el) => (el % 2 === 0 ? el * 2 : el));
+  console.log(processArray(testArray)); // [4,  3,  5, 12, 5,9, 20, 24, 13]
+*/
+const processArray = (a) => {
+    const array = []
+    a.forEach(el => el%2 ===0 && array.push(el*2) );
+    return array
+}
 console.log(processArray(testArray)); // [4, 12, 20, 24]
