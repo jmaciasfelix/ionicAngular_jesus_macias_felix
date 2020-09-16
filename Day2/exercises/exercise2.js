@@ -79,14 +79,12 @@ var object1 = {
 
   prop1: 'value1',
 
-  prop2: prop2,
+  prop2,
 
-  function1: function(param) {
-
+  function1(param) {
     if(typeof param == 'undefined') {
         param = 1;
     }
-
     console.log(param);
   }
 };
