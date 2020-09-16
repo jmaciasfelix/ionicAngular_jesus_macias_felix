@@ -180,14 +180,11 @@ console.log(a, b, c, d, e, f);
 console.log('=== 7 ===');
 
 var a1 = [4, 5, 6, 7, 8, 9, 10];
-
 var a2 = [0, 1, 2, 3];
 
-a1.forEach(function(x) {
-  a2.push(x);
-});
+a2=[...a2,...a1];
 
-console.log(a2); 
+console.log("TODO7 -> "+a2); 
 
 //
 // TODO 8
