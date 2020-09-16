@@ -49,6 +49,13 @@ array = array.map(function(x){
 
 console.log(array);
 
+/* Solution */
+array = [1, 2, 3];
+
+array = array.map(el => el*2);
+
+console.log(array);
+
 //
 // TODO 4
 // Declare las variables convenientemente
