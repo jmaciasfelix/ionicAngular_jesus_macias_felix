@@ -66,6 +66,11 @@ p.greet();
 
 console.log('=== 2 ===');
 
+import Coche from "./coche.js"
+
+const cocheUno = new Coche("audi");
+cocheUno.move(121);
+console.log(cocheUno.getInfo());
 
 //
 // TODO 3
