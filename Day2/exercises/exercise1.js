@@ -49,6 +49,11 @@ console.log(`Numero de usuarios con website ${numUserWebsite}`);
 
 console.log("=== 4 ===");
 
+const indexUser = users.findIndex(({ address }) =>
+  address ? address.number < 300 : null
+);
+console.log(`Numero del indice ${indexUser} del usuario cuyo numero de la calle es menor a 300`);
+
 //
 // TODO 5
 // Obtener un array que sólo contenga las cadenas de los emails de los usuarios
