@@ -134,7 +134,12 @@ console.log(usersLatLong);
 // pertenezca a un dominio biz
 //
 
-console.log("=== 9 ===");
+console.log('=== 9 ===');
+
+let phoneUsersBiz = []
+users.forEach(user=> user.website && user.website.endsWith(".biz") && phoneUsersBiz.push(user.phone))
+console.log("Teléfonos de los usuarios cuyo website pertenecen a un dominio bizz")
+console.log(phoneUsersBiz)
 
 //
 // TODO 10
