@@ -37,6 +37,10 @@ console.log(existsUser("japostigo@atsistemas.com")); // false
 
 console.log("=== 3 ===");
 
+let numUserWebsite = 0;
+users.forEach(({ website }) => (website ? numUserWebsite++ : null));
+console.log(`Numero de usuarios con website ${numUserWebsite}`);
+
 //
 // TODO 4
 // Obtener el índice de la posición que toma en el array el primer usuario
