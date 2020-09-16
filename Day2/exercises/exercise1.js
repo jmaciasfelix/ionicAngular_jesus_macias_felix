@@ -53,18 +53,20 @@ console.log("=== 4 ===");
 const indexUser = users.findIndex(({ address }) =>
   address ? address.number < 300 : null
 );
-console.log(`Número del índice ${indexUser} del usuario cuyo número de la calle es menor a 300`);
+console.log(
+  `Número del índice del usuario cuyo número de la calle es menor a 300 es => ${indexUser}`
+);
 
 //
 // TODO 5
 // Obtener un array que sólo contenga las cadenas de los emails de los usuarios
 //
 
-console.log('=== 5 ===');
+console.log("=== 5 ===");
 
-const emailsUsers = users.map(({email})=>(email))
+const emailsUsers = users.map(({ email }) => email);
 console.log("Array con los emails de los usuarios ");
-console.log(emailsUsers)
+console.log(emailsUsers);
 
 //
 // TODO 6
@@ -72,11 +74,11 @@ console.log(emailsUsers)
 // que contienen los ids y los nombres de usuarios de los usuarios
 //
 
-console.log('=== 6 ===');
+console.log("=== 6 ===");
 
-const usuarios = users.map(({id, username}) =>({ id, username }));
-console.log("Array con id y username de los usuarios")
-console.log(usuarios)
+const usuarios = users.map(({ id, username }) => ({ id, username }));
+console.log("Array con id y username de los usuarios");
+console.log(usuarios);
 //
 // TODO 7
 // Obtener el array de usuarios pero con los números de sus direcciones en
@@ -109,27 +111,32 @@ console.log("=== 8 ===");
  * @returns {boolean} Longitud cumple con rango.
  */
 function checkLongitud({ lng }, lowLng = -100, highLng = 100) {
-    const lngInt = parseInt(lng,10)
-    return((lowLng<lngInt)&&(lngInt<highLng))
+  const lngInt = parseInt(lng, 10);
+  return lowLng < lngInt && lngInt < highLng;
 }
 /**
  * Función que verifica si un latitud esta entre un rango.
  * Default -50 < lat < 50
- * @param {string} lat Latitud de la dirección del usuario. 
+ * @param {string} lat Latitud de la dirección del usuario.
  * @param {number} lowlat Cota inferior de la latitud, por defecto es -50
  * @param {number} highLat Cota superior de la latitud, por defecto es 50
  * @returns {boolean} Latitud cumple con rango.
  */
 function checkLatitud({ lat }, lowlat = -50, highLat = 50) {
-    const latInt = parseInt(lat,10)
-    return((lowlat<latInt)&&(latInt<highLat))
+  const latInt = parseInt(lat, 10);
+  return lowlat < latInt && latInt < highLat;
 }
 
 console.log(
   "Usuarios cuya dirección está ubicada entre la latitud -50 y 50, y la longitud -100 y 100 "
 );
 
-const usersLatLong = users.filter(({address})=>address!==undefined && checkLatitud(address.geo) && checkLongitud(address.geo))
+const usersLatLong = users.filter(
+  ({ address }) =>
+    address !== undefined &&
+    checkLatitud(address.geo) &&
+    checkLongitud(address.geo)
+);
 
 console.log(usersLatLong);
 
@@ -139,12 +146,19 @@ console.log(usersLatLong);
 // pertenezca a un dominio biz
 //
 
-console.log('=== 9 ===');
+console.log("=== 9 ===");
 
-let phoneUsersBiz = []
-users.forEach(user=> user.website && user.website.endsWith(".biz") && phoneUsersBiz.push(user.phone))
-console.log("Teléfonos de los usuarios cuyo website pertenecen a un dominio bizz")
-console.log(phoneUsersBiz)
+let phoneUsersBiz = [];
+users.forEach(
+  (user) =>
+    user.website &&
+    user.website.endsWith(".biz") &&
+    phoneUsersBiz.push(user.phone)
+);
+console.log(
+  "Teléfonos de los usuarios cuyo website pertenecen a un dominio bizz"
+);
+console.log(phoneUsersBiz);
 
 //
 // TODO 10
@@ -165,14 +179,14 @@ const testArray = [2, 3, 5, 6, 5, 9, 10, 12, 13];
   console.log(processArray(testArray)); // [4,  3,  5, 12, 5,9, 20, 24, 13]
 */
 /**
- * Función que dado un array de números enteros devuelve un nuevo array 
+ * Función que dado un array de números enteros devuelve un nuevo array
  * donde aquellos elementos pares se han multiplicado por dos.
  * @param {number[]} a Lista de números enteros
  * @returns {number[]} Array de los números que se han multiplicado por dos.
  */
 const processArray = (a) => {
-    const array = []
-    a.forEach(el => el%2 ===0 && array.push(el*2) );
-    return array
-}
+  const array = [];
+  a.forEach((el) => el % 2 === 0 && array.push(el * 2));
+  return array;
+};
 console.log(processArray(testArray)); // [4, 12, 20, 24]
