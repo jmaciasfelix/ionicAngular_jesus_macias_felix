@@ -19,8 +19,13 @@ console.log(user);
 //
 
 console.log("=== 2 ===");
-
-const existsUser = (email) => false; // TODO en vez de false, debe devolver el resultado
+/**
+ *
+ * @param {string} email Email de un usuario
+ */
+const existsUser = (email) => {
+  return users.some((user) => user.email === email);
+};
 
 console.log(existsUser("Nathan@yesenia.net")); // true
 console.log(existsUser("japostigo@atsistemas.com")); // false
