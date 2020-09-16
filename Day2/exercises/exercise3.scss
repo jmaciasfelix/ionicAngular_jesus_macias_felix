@@ -2,58 +2,54 @@
 // Simplify using SCSS sintax. Use http://www.sassmeister.com/
 //
 
+@mixin mix($bottom, $height, $top) {
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: $bottom;
+  height: $height;
+  top: $top;
+}
+
+$size-line-height: 50px;
+$colors: (
+  primary: silver,
+  secundary: #888,
+);
+
 .menu {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: auto;
-  left: 0;
-  height: 50px;
-}
-
-.menu .logged-user {
-  padding: 20px;
-}
-
-.menu .logged-user .avatar {
-  display: block;
-  width: 100px;
-}
-
-.menu .logged-user .avatar i {
-  color: #888;
-  line-height: 100px;
-}
-
-.menu .logged-user .controls {
-  position: absolute;
-  top: auto;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  height: 20px;
-}
-
-.menu ul {
-  list-style: none;
-  margin: 0;
-  height: 100%;
-}
-
-.menu ul li {
-  position: relative;
-  line-height: 50px;
-}
-
-.menu ul li.current {
-  background: silver;
-}
-
-.menu ul li:first-child {
-  border-top: 1px solid silver;
-}
-
-.menu ul li i {
-  line-height: 50px;
-  font-size: 14pt;
+  @include mix(auto, 50px, 0px);
+  .logged-user {
+    padding: 20px;
+    .controls {
+      @include mix(0, 20px, auto);
+    }
+    .avatar {
+      display: block;
+      width: 100px;
+      i {
+        color: map-get($colors, secundary);
+        line-height: 100px;
+      }
+    }
+  }
+  ul {
+    list-style: none;
+    margin: 0;
+    height: 100%;
+    li {
+      position: relative;
+      line-height: $size-line-height;
+      &.current {
+        background: map-get($colors, primary);
+      }
+      &:first-child {
+        border-top: 1px solid map-get($colors, primary);
+      }
+      i {
+        line-height: $size-line-height;
+        font-size: 14pt;
+      }
+    }
+  }
 }
