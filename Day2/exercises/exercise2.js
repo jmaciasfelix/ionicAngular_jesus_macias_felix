@@ -195,8 +195,8 @@ console.log('=== 8 ===');
 
 var a3 = [0, 1, 2, 3, 4, 5];
 
-for(i = 0; i < a3.length; i++) {
-  console.log(a3[i]);
+for (const element of a3) {
+  console.log(element)
 }
 
 var object3 = {
@@ -205,10 +205,11 @@ var object3 = {
   c: 3
 };
 
-var objKeys = Object.keys(object3);
 
-for(i = 0; i < objKeys.length; i++) {
-  if(object3.hasOwnProperty(objKeys[i])) {
-    console.log(objKeys[i] + ': ' + object3[objKeys[i]]);
+for (const key in object3) {
+  if (object3.hasOwnProperty(key)) {
+    const elementKey = object3[key];
+    console.log(`${key}: ${elementKey}`)
   }
 }
+
