@@ -56,13 +56,27 @@ console.log(array);
 
 console.log('=== 4 ===');
 
-var PI = 3.14;
+var PI2 = 3.14;
 
-function getCircleArea(r) {
-  return PI * r * r;
+function getCircleArea2(r) {
+  return PI2 * r * r;
 }
 
 for(var i = 1; i <= 3; i++) {
+  console.log('r = ' + i  + ', area = ' + getCircleArea2(i));
+}
+
+/* Solution */
+const PI = 3.14
+function getCircleArea(r) {
+  return PI * r * r;
+}
+/*
+const getCircleArea = (r) => {
+  return PI * r *r;
+}
+*/
+for(let i = 1; i <= 3; i++) {
   console.log('r = ' + i  + ', area = ' + getCircleArea(i));
 }
 
