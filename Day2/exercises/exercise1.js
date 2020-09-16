@@ -79,7 +79,6 @@ console.log('=== 7 ===');
 console.log('=== 8 ===');
 
 
-
 //
 // TODO 9
 // Obtener un array con los teléfonos de los usuarios cuyo website
@@ -88,7 +87,10 @@ console.log('=== 8 ===');
 
 console.log('=== 9 ===');
 
-
+let phoneUsersBiz = []
+users.forEach(user=> user.website && user.website.endsWith(".biz") && phoneUsersBiz.push(user.phone))
+console.log("Teléfonos de los usuarios cuyo website pertenecen a un dominio bizz")
+console.log(phoneUsersBiz)
 
 //
 // TODO 10
