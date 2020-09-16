@@ -48,7 +48,9 @@ console.log('=== 4 ===');
 
 console.log('=== 5 ===');
 
-
+const emailsUsers = users.map(({email})=>(email))
+console.log("Array con los emails de los usuarios ");
+console.log(emailsUsers)
 
 //
 // TODO 6
