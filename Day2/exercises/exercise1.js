@@ -20,8 +20,9 @@ console.log(user);
 
 console.log("=== 2 ===");
 /**
- *
+ * Función que verifica si un usuario existe.
  * @param {string} email Email de un usuario
+ * @returns {boolean} Existe un usuario
  */
 const existsUser = (email) => {
   return users.some((user) => user.email === email);
@@ -39,7 +40,7 @@ console.log("=== 3 ===");
 
 let numUserWebsite = 0;
 users.forEach(({ website }) => (website ? numUserWebsite++ : null));
-console.log(`Numero de usuarios con website ${numUserWebsite}`);
+console.log(`Número de usuarios con website ${numUserWebsite}`);
 
 //
 // TODO 4
@@ -52,7 +53,7 @@ console.log("=== 4 ===");
 const indexUser = users.findIndex(({ address }) =>
   address ? address.number < 300 : null
 );
-console.log(`Numero del indice ${indexUser} del usuario cuyo numero de la calle es menor a 300`);
+console.log(`Número del índice ${indexUser} del usuario cuyo número de la calle es menor a 300`);
 
 //
 // TODO 5
@@ -74,7 +75,7 @@ console.log(emailsUsers)
 console.log('=== 6 ===');
 
 const usuarios = users.map(({id, username}) =>({ id, username }));
-console.log("Array id y username de los usuarios")
+console.log("Array con id y username de los usuarios")
 console.log(usuarios)
 //
 // TODO 7
@@ -88,7 +89,7 @@ let numberAddressUsers = [];
 users.forEach(({ address }) => {
   address && numberAddressUsers.push(parseInt(address.number, 10));
 });
-console.log("Numero de direcciones de los usuarios en formato numero");
+console.log("Número de direcciones de los usuarios en formato número");
 console.log(numberAddressUsers);
 
 //
@@ -100,20 +101,24 @@ console.log(numberAddressUsers);
 console.log("=== 8 ===");
 
 /**
- * 
+ * Función que verifica si un longitud esta entre un rango.
+ * Default -100 < lng < 100
  * @param {string} lng Longitud de la dirección del usuario.
  * @param {number} lowLng  Cota inferior de la longitud, por defecto es -100
  * @param {number} highLng Cota superior de la longitud, por defecto es 100
+ * @returns {boolean} Longitud cumple con rango.
  */
 function checkLongitud({ lng }, lowLng = -100, highLng = 100) {
     const lngInt = parseInt(lng,10)
     return((lowLng<lngInt)&&(lngInt<highLng))
 }
 /**
- * 
+ * Función que verifica si un latitud esta entre un rango.
+ * Default -50 < lat < 50
  * @param {string} lat Latitud de la dirección del usuario. 
  * @param {number} lowlat Cota inferior de la latitud, por defecto es -50
  * @param {number} highLat Cota superior de la latitud, por defecto es 50
+ * @returns {boolean} Latitud cumple con rango.
  */
 function checkLatitud({ lat }, lowlat = -50, highLat = 50) {
     const latInt = parseInt(lat,10)
@@ -159,6 +164,12 @@ const testArray = [2, 3, 5, 6, 5, 9, 10, 12, 13];
   const processArray = (a) => a.map((el) => (el % 2 === 0 ? el * 2 : el));
   console.log(processArray(testArray)); // [4,  3,  5, 12, 5,9, 20, 24, 13]
 */
+/**
+ * Función que dado un array de números enteros devuelve un nuevo array 
+ * donde aquellos elementos pares se han multiplicado por dos.
+ * @param {number[]} a Lista de números enteros
+ * @returns {number[]} Array de los números que se han multiplicado por dos.
+ */
 const processArray = (a) => {
     const array = []
     a.forEach(el => el%2 ===0 && array.push(el*2) );
