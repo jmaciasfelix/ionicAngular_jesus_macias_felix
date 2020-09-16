@@ -58,8 +58,9 @@ console.log('=== 5 ===');
 
 console.log('=== 6 ===');
 
-
-
+const usuarios = users.map(({id, username}) =>({ id, username }));
+console.log("Array id y username de los usuarios")
+console.log(usuarios)
 //
 // TODO 7
 // Obtener el array de usuarios pero con los números de sus direcciones en
