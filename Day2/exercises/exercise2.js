@@ -111,12 +111,7 @@ var object2 = {
   f: 6
 };
 
-var a = object2.a;
-var b = object2.b;
-var c = object2.c;
-var d = object2.d;
-var e = object2.e;
-var f = object2.f;
+const {a,b,c,d,e,f} = object2;
 
 console.log(a, b, c, d, e, f);
 
