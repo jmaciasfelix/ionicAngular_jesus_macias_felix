@@ -85,6 +85,7 @@ export class FruitsListPage implements OnInit {
 
   public sandboxClick(): void {
     console.log("TODO: Navigate to sandbox page");
+    this.navController.navigateForward('/sandbox');
   }
   /**
    * delete fruit from screen
