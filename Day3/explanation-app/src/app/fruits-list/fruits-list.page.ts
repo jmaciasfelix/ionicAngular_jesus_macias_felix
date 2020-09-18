@@ -9,6 +9,8 @@ import { Fruit } from "../models/fruit.model";
 })
 export class FruitsListPage implements OnInit {
   public fruits: Fruit[];
+  public defaultFruits: Fruit[];
+  public isRestoreDisable: boolean = true;
 
   /**
    * constructor
@@ -78,14 +80,25 @@ export class FruitsListPage implements OnInit {
           "The smooth-skinned, green or purple fruit that grows in clusters on vines, may be eaten, and is used to make wine.",
       },
     ];
+    this.defaultFruits = [...this.fruits];
   }
 
   public sandboxClick(): void {
     console.log("TODO: Navigate to sandbox page");
   }
-
+  /**
+   * delete fruit from screen
+   * @param index fruit array index
+   */
   public deleteFruit(index: number): void {
-    console.log("TODO: Remove fruit index", index);
     this.fruits.splice(index, 1);
+    this.isRestoreDisable = false;
+  }
+  /**
+   * restore list of fruits
+   */
+  public restoreFruits(): void {
+    this.isRestoreDisable = true;
+    this.fruits = [...this.defaultFruits];
   }
 }
