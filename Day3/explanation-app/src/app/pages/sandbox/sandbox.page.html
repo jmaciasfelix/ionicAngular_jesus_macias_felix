@@ -6,4 +6,20 @@
     <ion-title>Sandbox</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content> </ion-content>
+<ion-content class="ion-padding">
+  <h1 class="title">Rating</h1>
+  <ion-button color="success">
+    <ion-icon slot="start" name="thumbs-up"> </ion-icon>
+    {{like}}
+  </ion-button>
+  <ion-button color="danger">
+    <ion-icon slot="start" name="thumbs-down"> </ion-icon>
+    {{dislike}}
+  </ion-button>
+</ion-content>
+<ion-content class="ion-padding">
+  <h1 class="title">Expandable content</h1>
+</ion-content>
+<ion-content class="ion-padding">
+  <h1 class="title">User form</h1>
+</ion-content>
