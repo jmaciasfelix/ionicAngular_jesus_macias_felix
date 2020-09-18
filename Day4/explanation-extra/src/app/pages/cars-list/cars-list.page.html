@@ -1,0 +1,11 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Coches</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-padding">
+    <app-car-card *ngFor="let car of cars; let i = index" [car]="car" (click)="carPressed(i)"></app-car-card>
+  </div>
+</ion-content>
