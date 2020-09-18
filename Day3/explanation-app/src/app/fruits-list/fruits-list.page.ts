@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { NavController } from "@ionic/angular";
-import { Fruit } from "../models/fruit.model";
+import { Fruit } from "../models/";
 
 @Component({
   selector: "app-fruits-list-page",
