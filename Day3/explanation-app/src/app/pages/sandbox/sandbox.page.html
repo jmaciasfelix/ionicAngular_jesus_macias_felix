@@ -7,28 +7,73 @@
   </ion-toolbar>
 </ion-header>
 <ion-content class="ion-padding">
-  <ion-text>
-    <h1 class="title">Rating</h1>
-  </ion-text>
-  <ion-button color="success" (click)="likeClick()">
-    <ion-icon slot="start" name="thumbs-up"> </ion-icon>
-    {{like}}
-  </ion-button>
-  <ion-button color="danger" (click)="dislikeClick()">
-    <ion-icon slot="start" name="thumbs-down"> </ion-icon>
-    {{dislike}}
-  </ion-button>
-  <ion-text>
-    <p>{{meanRating}}/10</p>
-  </ion-text>
-</ion-content>
-<ion-content class="ion-padding">
-  <ion-text>
-    <h1 class="title">Expandable content</h1>
-  </ion-text>
-</ion-content>
-<ion-content class="ion-padding">
-  <ion-text>
-    <h1 class="title">User form</h1>
-  </ion-text>
+  <div>
+    <ion-text>
+      <h1 class="title">Rating</h1>
+    </ion-text>
+    <ion-button color="success" (click)="likeClick()">
+      <ion-icon slot="start" name="thumbs-up"> </ion-icon>
+      {{like}}
+    </ion-button>
+    <ion-button color="danger" (click)="dislikeClick()">
+      <ion-icon slot="start" name="thumbs-down"> </ion-icon>
+      {{dislike}}
+    </ion-button>
+    <ion-text>
+      <p>{{meanRating}}<span> / 10</span></p>
+    </ion-text>
+  </div>
+  <div>
+    <ion-text>
+      <h1 class="title">Expandable content</h1>
+    </ion-text>
+    <ion-card class="ion-padding">
+      <ion-card-content class="header-card">
+        <ion-button (click)="handleExpandableContent()">
+          <ion-icon [name]="iconBtn"></ion-icon>
+        </ion-button>
+        <ion-card-title class="ion-padding-horizontal">Title</ion-card-title>
+      </ion-card-content>
+      <ion-card-content [hidden]="isHidden">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut arcu
+        velit. Morbi ac euismod sem. Sed ex odio, luctus ac suscipit vel, mattis
+        in nunc. Nunc fringilla diam et felis consectetur, sed sagittis neque
+        ornare. Mauris in quam commodo, tincidunt nisi vel, congue mi. Nulla
+        lorem magna, sagittis sit amet tempus sit amet, cursus id odio. Donec
+        luctus vitae felis ac mattis.
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <div>
+    <ion-text>
+      <h1 class="title">User form</h1>
+    </ion-text>
+    <div>
+      <ion-item>
+        <ion-label position="fixed">Name</ion-label>
+        <ion-input placeholder="Your Name" type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="fixed">Birthdate</ion-label>
+        <ion-input placeholder="Your Birthdate" type="date"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="fixed">Sex</ion-label>
+        <ion-input placeholder="Your Sex" type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="fixed">Phone</ion-label>
+        <ion-input placeholder="Your Phone" type="tel"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="fixed">Email</ion-label>
+        <ion-input placeholder="Your Email" type="email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="fixed">Message</ion-label>
+        <ion-textarea placeholder="Write your message">
+        </ion-textarea>
+      </ion-item>
+    </div>
+  </div>
 </ion-content>
