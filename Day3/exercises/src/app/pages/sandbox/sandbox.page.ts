@@ -1,3 +1,4 @@
+// angular
 import { Component, OnInit } from "@angular/core";
 
 @Component({
@@ -35,8 +36,10 @@ export class SandboxPage implements OnInit {
     this.updateMeanRating();
   }
 
+  /**
+   * Toggle status expanding or collapsing content 
+   */
   public handleExpandableContent(): void {
-    console.log("handleExpandableContent");
     this.isHidden = !this.isHidden;
     this.isHidden ? (this.iconBtn = "add") : (this.iconBtn = "remove");
   }

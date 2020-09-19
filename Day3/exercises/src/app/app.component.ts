@@ -1,6 +1,10 @@
+// angular
 import { Component } from '@angular/core';
 
+//ionic
 import { Platform } from '@ionic/angular';
+
+//ionic native
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 

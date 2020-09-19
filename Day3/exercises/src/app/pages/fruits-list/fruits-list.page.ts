@@ -1,5 +1,10 @@
+// angular
 import { Component, OnInit } from "@angular/core";
+
+// ionic
 import { NavController } from "@ionic/angular";
+
+// models
 import { Fruit } from "../../models/";
 
 @Component({
@@ -10,7 +15,7 @@ import { Fruit } from "../../models/";
 export class FruitsListPage implements OnInit {
   public fruits: Fruit[];
   public defaultFruits: Fruit[];
-  public isRestoreDisable: boolean = true;
+  public isBtnRestoreDisable: boolean = true;
 
   /**
    * constructor
@@ -83,23 +88,25 @@ export class FruitsListPage implements OnInit {
     this.defaultFruits = [...this.fruits];
   }
 
+  /**
+   * Navigate to /sandbox page
+   */
   public sandboxClick(): void {
-    console.log("TODO: Navigate to sandbox page");
     this.navController.navigateForward('/sandbox');
   }
   /**
-   * delete fruit from screen
+   * delete a fruit from screen
    * @param index fruit array index
    */
   public deleteFruit(index: number): void {
     this.fruits.splice(index, 1);
-    this.isRestoreDisable = false;
+    this.isBtnRestoreDisable = false;
   }
   /**
    * restore list of fruits
    */
   public restoreFruits(): void {
-    this.isRestoreDisable = true;
+    this.isBtnRestoreDisable = true;
     this.fruits = [...this.defaultFruits];
   }
 }

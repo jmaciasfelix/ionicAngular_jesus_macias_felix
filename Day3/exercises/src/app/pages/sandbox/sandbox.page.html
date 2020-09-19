@@ -7,9 +7,10 @@
   </ion-toolbar>
 </ion-header>
 <ion-content class="ion-padding">
-  <div>
+  <!--Rating-->
+  <div class="container-rating">
     <ion-text>
-      <h1 class="title">Rating</h1>
+      <h1>Rating</h1>
     </ion-text>
     <ion-button color="success" (click)="likeClick()">
       <ion-icon slot="start" name="thumbs-up"> </ion-icon>
@@ -23,11 +24,12 @@
       <p>{{meanRating}}<span> / 10</span></p>
     </ion-text>
   </div>
-  <div>
+  <!--Expandable content-->
+  <div class="container-expandable">
     <ion-text>
       <h1 class="title">Expandable content</h1>
     </ion-text>
-    <ion-card class="ion-padding">
+    <ion-card>
       <ion-card-content class="header-card">
         <ion-button (click)="handleExpandableContent()">
           <ion-icon [name]="iconBtn"></ion-icon>
@@ -44,6 +46,7 @@
       </ion-card-content>
     </ion-card>
   </div>
+  <!--User form-->
   <div>
     <ion-text>
       <h1 class="title">User form</h1>
@@ -59,7 +62,10 @@
       </ion-item>
       <ion-item>
         <ion-label position="fixed">Sex</ion-label>
-        <ion-input placeholder="Your Sex" type="text"></ion-input>
+        <ion-select slot="end" placeholder="Select your sex">
+          <ion-select-option value="f">Female</ion-select-option>
+          <ion-select-option value="m">Male</ion-select-option>
+        </ion-select>
       </ion-item>
       <ion-item>
         <ion-label position="fixed">Phone</ion-label>

@@ -1,16 +1,32 @@
-ion-title{
-    font-weight: bold;
+ion-title {
+  font-weight: bold;
 }
-.title{
-    font-weight: bold;
-    font-size: 30px;
-}
-.header-card{
+
+.container-expandable {
+  .header-card {
     display: flex;
     flex-direction: row;
     align-items: center;
+  }
 }
 
-ion-text span {
+ion-text {
+  h1 {
+    font-weight: bold;
+    font-size: 30px;
+  }
+  span {
     padding: 0 4px;
+  }
+}
+.container-rating {
+  p {
+    padding: 0 4px;
+  }
+  ion-button {
+    padding: 0 4px;
+    ion-icon {
+      padding: 0 8px;
+    }
+  }
 }

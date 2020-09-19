@@ -1,4 +1,7 @@
+// angular
 import { NgModule } from "@angular/core";
+
+// router
 import { PreloadAllModules, RouterModule, Routes } from "@angular/router";
 
 const routes: Routes = [
@@ -11,7 +14,7 @@ const routes: Routes = [
     path: "home",
     loadChildren: () =>
       import("./pages/fruits-list/fruits-list.module").then(
-        (m) => m.FruitsListPageModule
+        (module) => module.FruitsListPageModule
       ),
   },
   {
