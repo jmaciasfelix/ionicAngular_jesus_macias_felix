@@ -10,6 +10,8 @@ import { ActivatedRoute } from "@angular/router";
 export class SandboxPage implements OnInit {
   public folder: string;
   public numElementExpandable: number;
+  public totalUpVotes: number;
+  public totalDownVotes: number;
 
   /**
    * Contructor
@@ -20,12 +22,23 @@ export class SandboxPage implements OnInit {
   ngOnInit() {
     this.numElementExpandable = 0;
     this.folder = this.activatedRoute.snapshot.paramMap.get("id");
+    this.totalDownVotes = 0;
+    this.totalUpVotes = 0;
   }
   /**
    * Function that calculates the number of expanded elements.
-   * @param isHidden boolean Variable that indicates if an element is hidden (true) or visible (false)
+   * @param isHidden {boolean} Variable that indicates if an element is hidden (true) or visible (false)
    */
   expandableContentChanged(isHidden: boolean): void {
     isHidden ? this.numElementExpandable-- : this.numElementExpandable++;
+  }
+  /**
+   * Calculate total number of votes up and down
+   * @param upVotes {number}
+   * @param downVotes {number}
+   */
+  calculateTotalVotes(vote:object): void{
+    vote["upVote"] ? this.totalUpVotes+=vote["upVote"] :null ;
+    vote["downVote"] ? this.totalDownVotes+=vote["downVote"] :null ;
   }
 }

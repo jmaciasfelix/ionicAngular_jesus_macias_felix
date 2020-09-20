@@ -1,20 +1,24 @@
 //angular
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
 
 @Component({
-  selector: 'app-rating',
-  templateUrl: './rating.component.html',
-  styleUrls: ['./rating.component.scss'],
+  selector: "app-rating",
+  templateUrl: "./rating.component.html",
+  styleUrls: ["./rating.component.scss"],
 })
 export class RatingComponent implements OnInit {
   public like: number;
   public dislike: number;
   public meanRating: number;
+  @Input() defaultUpVotes: number = 0 ;
+  @Input() defaultDownVotes: number = 0;
+  @Output() change = new EventEmitter<object>();
 
   public ngOnInit(): void {
-    this.like = 0;
-    this.dislike = 0;
+    this.like = +this.defaultUpVotes;
+    this.dislike = +this.defaultDownVotes;
     this.meanRating = 0;
+    this.change.emit({ upVote: this.like, downVote: this.dislike });
   }
   /**
    * Add a like
@@ -22,6 +26,7 @@ export class RatingComponent implements OnInit {
   public likeClick(): void {
     this.like++;
     this.updateMeanRating();
+    this.change.emit({ upVote: 1 });
   }
 
   /**
@@ -30,6 +35,7 @@ export class RatingComponent implements OnInit {
   public dislikeClick(): void {
     this.dislike++;
     this.updateMeanRating();
+    this.change.emit({ downVote: 1 });
   }
 
   /**

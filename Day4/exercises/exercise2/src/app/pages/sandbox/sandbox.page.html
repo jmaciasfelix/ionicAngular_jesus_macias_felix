@@ -11,7 +11,7 @@
     <strong class="capitalize">{{ folder }}</strong>
     <div *ngIf="folder==='home'">
       <h3>Select a menu item</h3>
-      <p>This app only has complete the section expandable content.</p>
+      <p>This app has complete the section rating and expandable content.</p>
     </div>
   </div>
   <div *ngIf="folder==='Expandable-Content'">
@@ -44,6 +44,11 @@
     </p>
   </div>
   <div *ngIf="folder==='Rating'">
-    <app-rating></app-rating>
+    <app-rating (change)="calculateTotalVotes($event)"></app-rating>
+    <app-rating defaultUpVotes="1" (change)="calculateTotalVotes($event)"></app-rating>
+    <app-rating defaultDownVotes="2" (change)="calculateTotalVotes($event)"></app-rating>
+    <app-rating defaultUpVotes="3" defaultDownVotes="1" (change)="calculateTotalVotes($event)"></app-rating>
+    <p style="padding: 0px 10px">Up votes sum {{totalUpVotes}}</p>
+    <p style="padding: 0px 10px">Down votes sum {{totalDownVotes}}</p>
   </div>
 </ion-content>
