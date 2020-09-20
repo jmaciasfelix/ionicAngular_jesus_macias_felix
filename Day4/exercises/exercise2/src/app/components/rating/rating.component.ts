@@ -10,7 +10,7 @@ export class RatingComponent implements OnInit {
   public like: number;
   public dislike: number;
   public meanRating: number;
-  @Input() defaultUpVotes: number = 0 ;
+  @Input() defaultUpVotes: number = 0;
   @Input() defaultDownVotes: number = 0;
   @Output() change = new EventEmitter<object>();
 
@@ -18,6 +18,7 @@ export class RatingComponent implements OnInit {
     this.like = +this.defaultUpVotes;
     this.dislike = +this.defaultDownVotes;
     this.meanRating = 0;
+    this.updateMeanRating();
     this.change.emit({ upVote: this.like, downVote: this.dislike });
   }
   /**
@@ -43,6 +44,10 @@ export class RatingComponent implements OnInit {
    */
   private updateMeanRating(): void {
     const numVote: number = this.like + this.dislike;
-    this.meanRating = parseFloat((10 * (this.like / numVote)).toFixed(1));
+    if (numVote === 0) {
+      this.meanRating = 0;
+    } else {
+      this.meanRating = parseFloat((10 * (this.like / numVote)).toFixed(1));
+    }
   }
 }
