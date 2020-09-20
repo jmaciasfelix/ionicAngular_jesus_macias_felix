@@ -1,9 +1,49 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>sandbox</ion-title>
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Sandbox</ion-title>
   </ion-toolbar>
 </ion-header>
-
-<ion-content>
-
+<ion-content [fullscreen]="true">
+  <div id="container">
+    <strong class="capitalize">{{ folder }}</strong>
+    <div *ngIf="folder==='home'">
+      <h3>Select a menu item</h3>
+      <p>This app only has complete the section expandable content.</p>
+    </div>
+  </div>
+  <div *ngIf="folder==='Expandable-Content'">
+    <app-expandable-content
+      title="Title1"
+      (change)="expandableContentChanged($event)"
+    >
+      Content1
+    </app-expandable-content>
+    <app-expandable-content
+      title="Title2"
+      (change)="expandableContentChanged($event)"
+    >
+      Content2
+    </app-expandable-content>
+    <app-expandable-content
+      title="Title3"
+      (change)="expandableContentChanged($event)"
+    >
+      Content3
+    </app-expandable-content>
+    <app-expandable-content
+      title="Title4"
+      (change)="expandableContentChanged($event)"
+    >
+      Content4
+    </app-expandable-content>
+    <p style="padding: 20px 10px">
+      Number of expanded {{numElementExpandable}}
+    </p>
+  </div>
+  <div *ngIf="folder==='Rating'">
+    <app-rating></app-rating>
+  </div>
 </ion-content>

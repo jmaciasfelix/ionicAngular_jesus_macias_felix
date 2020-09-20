@@ -1,19 +1,17 @@
+//angular
 import { NgModule } from '@angular/core';
+//router
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'folder/Inbox',
+    redirectTo: 'sandbox/home',
     pathMatch: 'full'
   },
   {
-    path: 'folder/:id',
-    loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule)
-  },
-  {
-    path: 'sandbox',
-    loadChildren: () => import('./pages/sandbox/sandbox.module').then( m => m.SandboxPageModule)
+    path: 'sandbox/:id',
+    loadChildren: () => import('./pages/sandbox/sandbox.module').then( module => module.SandboxPageModule)
   }
 ];
 

@@ -1,0 +1,13 @@
+<div class="container-expandable">
+  <ion-card>
+    <ion-card-content class="header-card">
+      <ion-button (click)="handleExpandableContent()">
+        <ion-icon [name]="iconBtn"></ion-icon>
+      </ion-button>
+      <ion-card-title class="ion-padding-horizontal">{{title}}</ion-card-title>
+    </ion-card-content>
+    <ion-card-content [hidden]="isHidden">
+      <ng-content> </ng-content>
+    </ion-card-content>
+  </ion-card>
+</div>
