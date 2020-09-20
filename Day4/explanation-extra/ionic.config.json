@@ -1,7 +1,0 @@
-{
-  "name": "explanation-extra",
-  "integrations": {
-    "cordova": {}
-  },
-  "type": "angular"
-}
