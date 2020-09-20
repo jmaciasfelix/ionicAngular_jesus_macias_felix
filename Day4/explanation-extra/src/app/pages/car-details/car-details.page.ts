@@ -30,7 +30,7 @@ export class CarDetailsPage implements OnInit {
    * fired on component initialization
    */
   public ngOnInit(): void {
-    const index = +this.activatedRoute.snapshot.paramMap.get('index');
+    const index = this.activatedRoute.snapshot.paramMap.get('index');
     this.car = this.carsService.getCar(index);
     console.log(this.car);
   }

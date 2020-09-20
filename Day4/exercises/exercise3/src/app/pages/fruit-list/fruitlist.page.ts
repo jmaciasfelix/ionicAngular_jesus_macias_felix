@@ -1,24 +1,32 @@
 //angular
 import { Component, OnInit } from "@angular/core";
-//router
-import { ActivatedRoute } from "@angular/router";
+//interface
+import { Fruit } from "../../interfaces";
+//services
+import { FruitService } from "../../services";
 @Component({
   selector: "app-fruit-list",
   templateUrl: "./fruitlist.page.html",
   styleUrls: ["./fruitlist.page.scss"],
 })
 export class FruitListPage implements OnInit {
+  public fruits: Fruit[];
   public folder: string;
   public numElementExpandable: number;
+
   /**
-   * Contructor
-   * @param activatedRoute ActivatedRoute Needed to get path url
+   * page constructor
+   *
+   * @param fruitService fruit service
    */
-  constructor(private activatedRoute: ActivatedRoute) {}
-  
+  constructor(
+    private readonly fruitService: FruitService
+    
+  ) {}
+
   ngOnInit() {
     this.numElementExpandable = 0;
-    this.folder = this.activatedRoute.snapshot.paramMap.get("id");
+    this.fruits = this.fruitService.getListFruit();
   }
   /**
    * Function that calculates the number of expanded elements.

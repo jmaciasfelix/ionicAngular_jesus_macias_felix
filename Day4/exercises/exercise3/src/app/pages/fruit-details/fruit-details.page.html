@@ -1,0 +1,22 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button [defaultHref]="'/'"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{fruit.name}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="ion-padding">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="3">
+          <img src="assets/images/fruits/{{ fruit.image }}" />
+        </ion-col>
+        <ion-col>
+          <p>{{ fruit.description }}</p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

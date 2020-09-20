@@ -5,4 +5,10 @@
     flex-direction: row;
     align-items: center;
   }
+  .btn-card{
+    .btnDetails {
+      text-transform: uppercase;
+    }
+    float: right;
+  }
 }

@@ -1,5 +1,9 @@
 //angular
-import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
+// ionic
+import { NavController } from "@ionic/angular";
+//interfaces
+import { Fruit } from 'src/app/interfaces';
 
 @Component({
   selector: "app-expandable-content",
@@ -7,15 +11,14 @@ import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
   styleUrls: ["./expandable-content.component.scss"],
 })
 export class ExpandableContentComponent implements OnInit {
-  @Input() title: string = "TitleDefault";
-  @Output() change = new EventEmitter<boolean>();
-  
+  @Input() fruit: Fruit;
+
   public isHidden: boolean;
   public iconBtn: string;
   /**
    * constructor
    */
-  constructor() {}
+  constructor(private readonly navController: NavController) {}
 
   ngOnInit(): void {
     this.isHidden = true;
@@ -27,6 +30,11 @@ export class ExpandableContentComponent implements OnInit {
   public handleExpandableContent(): void {
     this.isHidden = !this.isHidden;
     this.isHidden ? (this.iconBtn = "add") : (this.iconBtn = "remove");
-    this.change.emit(this.isHidden);
+  }
+  /**
+   * fired when user clicks on fruit
+   */
+  public fruitPressed() {
+    this.navController.navigateForward(["/fruit", this.fruit.name]);
   }
 }

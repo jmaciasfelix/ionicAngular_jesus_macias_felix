@@ -9,31 +9,9 @@
 <ion-content [fullscreen]="true">
   <div>
     <app-expandable-content
-      title="Title1"
-      (change)="expandableContentChanged($event)"
+      *ngFor="let fruit of fruits; let i = index"
+      [fruit]="fruit"
     >
-      Content1
     </app-expandable-content>
-    <app-expandable-content
-      title="Title2"
-      (change)="expandableContentChanged($event)"
-    >
-      Content2
-    </app-expandable-content>
-    <app-expandable-content
-      title="Title3"
-      (change)="expandableContentChanged($event)"
-    >
-      Content3
-    </app-expandable-content>
-    <app-expandable-content
-      title="Title4"
-      (change)="expandableContentChanged($event)"
-    >
-      Content4
-    </app-expandable-content>
-    <p style="padding: 20px 10px">
-      Number of expanded {{numElementExpandable}}
-    </p>
   </div>
 </ion-content>
