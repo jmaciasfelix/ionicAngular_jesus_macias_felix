@@ -3,16 +3,13 @@ import { Component, OnInit } from "@angular/core";
 //router
 import { ActivatedRoute } from "@angular/router";
 @Component({
-  selector: "app-sandbox",
-  templateUrl: "./sandbox.page.html",
-  styleUrls: ["./sandbox.page.scss"],
+  selector: "app-fruit-list",
+  templateUrl: "./fruitlist.page.html",
+  styleUrls: ["./fruitlist.page.scss"],
 })
-export class SandboxPage implements OnInit {
+export class FruitListPage implements OnInit {
   public folder: string;
   public numElementExpandable: number;
-  public totalUpVotes: number;
-  public totalDownVotes: number;
-
   /**
    * Contructor
    * @param activatedRoute ActivatedRoute Needed to get path url
@@ -22,8 +19,6 @@ export class SandboxPage implements OnInit {
   ngOnInit() {
     this.numElementExpandable = 0;
     this.folder = this.activatedRoute.snapshot.paramMap.get("id");
-    this.totalDownVotes = 0;
-    this.totalUpVotes = 0;
   }
   /**
    * Function that calculates the number of expanded elements.
@@ -31,14 +26,5 @@ export class SandboxPage implements OnInit {
    */
   expandableContentChanged(isHidden: boolean): void {
     isHidden ? this.numElementExpandable-- : this.numElementExpandable++;
-  }
-  /**
-   * Calculate total number of votes up and down
-   * @param upVotes {number}
-   * @param downVotes {number}
-   */
-  calculateTotalVotes(vote:object): void{
-    vote["upVote"] ? this.totalUpVotes+=vote["upVote"] :null ;
-    vote["downVote"] ? this.totalDownVotes+=vote["downVote"] :null ;
   }
 }

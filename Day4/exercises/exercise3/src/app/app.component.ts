@@ -1,5 +1,5 @@
 //angular
-import { Component, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
 import { Platform } from "@ionic/angular";
 //ionic native
 import { SplashScreen } from "@ionic-native/splash-screen/ngx";
@@ -10,23 +10,12 @@ import { StatusBar } from "@ionic-native/status-bar/ngx";
   templateUrl: "app.component.html",
   styleUrls: ["app.component.scss"],
 })
-export class AppComponent implements OnInit {
-  public selectedIndex = 0;
+export class AppComponent {
   public appPages = [
     {
-      title: "Sandbox",
+      title: "Fruit list",
       url: "/",
-      icon: "mail",
-    },
-    {
-      title: "Expandable Content",
-      url: "/sandbox/Expandable-Content",
       icon: "archive",
-    },
-    {
-      title: "Rating",
-      url: "/sandbox/Rating",
-      icon: "heart",
     },
   ];
 
@@ -43,14 +32,5 @@ export class AppComponent implements OnInit {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
-  }
-
-  ngOnInit() {
-    const path = window.location.pathname.split("sandbox/")[1];
-    if (path !== undefined) {
-      this.selectedIndex = this.appPages.findIndex(
-        (page) => page.title.toLowerCase() === path.toLowerCase()
-      );
-    }
   }
 }

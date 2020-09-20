@@ -5,22 +5,21 @@ import { NgModule } from "@angular/core";
 //ionic
 import { IonicModule } from "@ionic/angular";
 //pages
-import { SandboxPage } from "./sandbox.page";
+import { FruitListPage } from "./fruitlist.page";
 //components
-import { ExpandableContentModule, RatingModule } from "src/app/components";
+import { ExpandableContentModule } from "src/app/components";
 //routing
-import { SandboxPageRoutingModule } from "./sandbox-routing.module";
+import { FruitListPageRoutingModule } from "./fruitlist-routing.module";
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    SandboxPageRoutingModule,
+    FruitListPageRoutingModule,
     ExpandableContentModule,
-    RatingModule,
   ],
-  declarations: [SandboxPage],
-  exports: [SandboxPage],
+  declarations: [FruitListPage],
+  exports: [FruitListPage],
 })
-export class SandboxPageModule {}
+export class FruitListPageModule {}

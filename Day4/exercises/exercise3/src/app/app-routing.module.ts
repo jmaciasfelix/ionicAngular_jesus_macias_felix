@@ -6,12 +6,8 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'sandbox/home',
-    pathMatch: 'full'
-  },
-  {
-    path: 'sandbox/:id',
-    loadChildren: () => import('./pages/sandbox/sandbox.module').then( module => module.SandboxPageModule)
+    pathMatch: 'full',
+    loadChildren: () => import('./pages/fruit-list/fruitlist.module').then( module => module.FruitListPageModule)
   }
 ];
 
