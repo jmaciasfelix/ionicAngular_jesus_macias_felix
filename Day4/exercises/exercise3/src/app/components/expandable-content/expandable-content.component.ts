@@ -3,7 +3,7 @@ import { Component, OnInit, Input } from "@angular/core";
 // ionic
 import { NavController } from "@ionic/angular";
 //interfaces
-import { Fruit } from 'src/app/interfaces';
+import { Fruit } from "src/app/interfaces";
 
 @Component({
   selector: "app-expandable-content",
@@ -16,7 +16,8 @@ export class ExpandableContentComponent implements OnInit {
   public isHidden: boolean;
   public iconBtn: string;
   /**
-   * constructor
+   * 
+   * @param navController ionic navController
    */
   constructor(private readonly navController: NavController) {}
 
@@ -34,7 +35,7 @@ export class ExpandableContentComponent implements OnInit {
   /**
    * fired when user clicks on fruit
    */
-  public fruitPressed() {
+  public fruitPressed():void {
     this.navController.navigateForward(["/fruit", this.fruit.name]);
   }
 }

@@ -78,7 +78,7 @@ export class FruitService {
    * get one fruit
    *
    * @param nameFruit fruit name
-   * @returns fruit
+   * @returns {Fruit} a fruit
    */
   public getFruit(nameFruit: string): Fruit {
     return this.fruits.find(fruit => fruit.name === nameFruit);
