@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-  <app-loading-feedback [state]="state" (retryPressed)="loadUser()">
+  <app-loading-feedback [state]="state" (retryPressed)="loadUser($event)">
     <!--Form-->
     <div>
       <h1>Form</h1>
@@ -79,8 +79,8 @@
     </div>
   </app-loading-feedback>
 </ion-content>
-<ion-footer>
-  <ion-button (click)="setLoading()">Set State Loading</ion-button>
-  <ion-button (click)="setLoaded()">Set State Loaded</ion-button>
-  <ion-button (click)="setError()">Set State Error</ion-button>
+<ion-footer class="ion-padding">
+  <ion-button color="primary" expand="block" (click)="setLoading()">Set State Loading</ion-button>
+  <ion-button color="success" expand="block" (click)="setLoaded()">Set State Loaded</ion-button>
+  <ion-button color="danger" expand="block" (click)="setError()">Set State Error</ion-button>
 </ion-footer>

@@ -1,5 +1,5 @@
 //angular
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, EventEmitter, Output } from "@angular/core";
 //models
 import { State } from "../../../models";
 
@@ -10,6 +10,7 @@ import { State } from "../../../models";
 })
 export class LoadingFeedbackComponent implements OnInit {
   @Input() state: State.LOADING | State.LOADED | State.ERROR = State.LOADING;
+  @Output() retryPressed = new EventEmitter<String>();
   public stateModel: object = State;
 
   constructor() {}
@@ -21,6 +22,7 @@ export class LoadingFeedbackComponent implements OnInit {
   }
 
   retry() {
-    console.log("Retry");
+    console.log("Retry from loading feedback component");
+    this.retryPressed.emit(State.ERROR);
   }
 }

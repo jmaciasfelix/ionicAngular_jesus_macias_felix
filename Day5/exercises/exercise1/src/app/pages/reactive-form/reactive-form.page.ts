@@ -61,6 +61,15 @@ export class ReactiveFormPage implements OnInit {
       email: null,
     });
   }
+
+  public resetError() {
+    console.log("Reset Error");
+    this.state = State.LOADING;
+  }
+  public loadUser(state: string) {
+    console.log(`loadUser state ${state}`);
+    this.state = State.LOADING;
+  }
   /*Util*/
   public setLoading() {
     console.log("Set Loading");
