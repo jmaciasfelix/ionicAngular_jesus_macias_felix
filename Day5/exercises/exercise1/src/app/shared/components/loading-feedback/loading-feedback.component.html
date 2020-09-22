@@ -1,0 +1,6 @@
+<ng-container *ngIf="state === 'loading'"> spinner </ng-container>
+<ng-container *ngIf="state === 'loaded'"> content </ng-container>
+<ng-container *ngIf="state === 'error'">
+  <p>Error</p>
+  <ion-button (click)="retry()">Reintentar</ion-button>
+</ng-container>
