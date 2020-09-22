@@ -12,7 +12,7 @@ export class LoadingFeedbackComponent implements OnInit {
   @Input() state: State.LOADING | State.LOADED | State.ERROR = State.LOADING;
   @Output() retryPressed = new EventEmitter<String>();
 
-  public stateModel: object = State;
+  public stateModel = State;
 
   /**
    * ngOnInit loadingfeedback
