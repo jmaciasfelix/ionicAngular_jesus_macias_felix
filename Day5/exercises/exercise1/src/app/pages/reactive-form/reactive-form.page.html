@@ -37,22 +37,16 @@
           <ion-input type="email" formControlName="email"></ion-input>
         </ion-item>
         <div class="ion-margin ion-text-right">
-          <ion-button type="submit" [disabled]="form.invalid"
-            >Submit</ion-button
-          >
+          <ion-button type="submit" [disabled]="form.invalid">Submit</ion-button>
         </div>
       </form>
     </div>
-
     <!--Buttons-->
     <div>
       <ion-button (click)="reset()">Reiniciar formulario</ion-button>
-      <ion-button (click)="loadStaticUser()"
-        >Cargar usuario estático</ion-button
-      >
+      <ion-button (click)="loadStaticUser()">Cargar usuario estático</ion-button>
       <ion-button (click)="loadBackUser()">Cargar usuario backend</ion-button>
     </div>
-
     <!--Summary-->
     <div>
       <h1>Summary</h1>
@@ -79,6 +73,8 @@
     </div>
   </app-loading-feedback>
 </ion-content>
+
+<!--Buttons states-->
 <ion-footer class="ion-padding">
   <ion-button color="primary" expand="block" (click)="setLoading()">Set State Loading</ion-button>
   <ion-button color="success" expand="block" (click)="setLoaded()">Set State Loaded</ion-button>

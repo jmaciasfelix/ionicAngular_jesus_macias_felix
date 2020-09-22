@@ -1,38 +1,41 @@
-import { NgModule } from '@angular/core';
-import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+//angular
+import { NgModule } from "@angular/core";
+//router
+import { PreloadAllModules, RouterModule, Routes } from "@angular/router";
 
 const routes: Routes = [
   {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full'
+    path: "",
+    redirectTo: "home",
+    pathMatch: "full",
   },
   {
-    path: 'home',
+    path: "home",
     loadChildren: () =>
-      import('./pages/home/home.module')
-        .then(m => m.HomePageModule)
+      import("./pages/home/home.module").then((module) => module.HomePageModule),
   },
   {
-    path: 'template-driven-form',
+    path: "template-driven-form",
     loadChildren: () =>
-      import('./pages/template-driven-form/template-driven-form.module')
-        .then(m => m.TemplateDrivenFormPageModule)
+      import("./pages/template-driven-form/template-driven-form.module").then(
+        (module) => module.TemplateDrivenFormPageModule
+      ),
   },
   {
-    path: 'reactive-form',
+    path: "reactive-form",
     loadChildren: () =>
-      import('./pages/reactive-form/reactive-form.module')
-        .then(m => m.ReactiveFormPageModule)
-  }
+      import("./pages/reactive-form/reactive-form.module").then(
+        (module) => module.ReactiveFormPageModule
+      ),
+  },
 ];
 
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, {
-      preloadingStrategy: PreloadAllModules
-    })
+      preloadingStrategy: PreloadAllModules,
+    }),
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

@@ -6,7 +6,9 @@
     <ng-content> </ng-content>
   </ng-container>
   <ng-container *ngSwitchCase="stateModel.ERROR" class="ion-padding">
-    <p>Error</p>
+    <ion-text>
+      <h2>Error</h2>
+    </ion-text>
     <ion-button (click)="retry()">Reintentar</ion-button>
   </ng-container>
 </ion-content>

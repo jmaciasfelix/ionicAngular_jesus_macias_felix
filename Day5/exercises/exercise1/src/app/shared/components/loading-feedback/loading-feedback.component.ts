@@ -11,18 +11,18 @@ import { State } from "../../../models";
 export class LoadingFeedbackComponent implements OnInit {
   @Input() state: State.LOADING | State.LOADED | State.ERROR = State.LOADING;
   @Output() retryPressed = new EventEmitter<String>();
+
   public stateModel: object = State;
 
-  constructor() {}
+  /**
+   * ngOnInit loadingfeedback
+   */
+  ngOnInit() {}
 
-  ngOnInit() {
-    console.log("Enum State")
-    console.log(State);
-    console.log(`Input state ${this.state}`);
-  }
-
-  retry() {
-    console.log("Retry from loading feedback component");
+  /**
+   * Retry function emit a event State.ERROR
+   */
+  retry(): void {
     this.retryPressed.emit(State.ERROR);
   }
 }

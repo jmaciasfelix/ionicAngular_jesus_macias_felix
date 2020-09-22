@@ -1,12 +1,14 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
-import { IonicModule } from '@ionic/angular';
-
-import { ReactiveFormPage } from './reactive-form.page';
-import { HomePageModule } from '../home/home.module';
-import { SharedModule } from 'src/app/shared/shared.module';
+//angular
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { RouterModule } from "@angular/router";
+//ionic
+import { IonicModule } from "@ionic/angular";
+//pages
+import { ReactiveFormPage } from "./reactive-form.page";
+//shared
+import { SharedModule } from "src/app/shared/shared.module";
 
 @NgModule({
   imports: [
@@ -15,13 +17,13 @@ import { SharedModule } from 'src/app/shared/shared.module';
     IonicModule,
     RouterModule.forChild([
       {
-        path: '',
-        component: ReactiveFormPage
-      }
+        path: "",
+        component: ReactiveFormPage,
+      },
     ]),
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
   ],
-  declarations: [ReactiveFormPage]
+  declarations: [ReactiveFormPage],
 })
 export class ReactiveFormPageModule {}
