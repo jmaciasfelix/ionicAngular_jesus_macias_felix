@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 //validator
 import { isNotTemporalEmailValidator } from "src/app/shared/utils/validators";
 //services
-import { UserService } from "src/app/shared/services/user.service";
+import { UserService, ToastService } from "src/app/shared/services/";
 //models
 import { User, State } from "../../models";
 import { ToastController } from '@ionic/angular';
@@ -27,6 +27,8 @@ export class ReactiveFormPage {
       [Validators.required, Validators.email, isNotTemporalEmailValidator],
     ],
   });
+  
+  private toast: ToastService = new ToastService(new ToastController()); 
 
   /**
    * Contructor ReactiveForm
@@ -35,8 +37,7 @@ export class ReactiveFormPage {
    */
   constructor(
     private formBuilder: FormBuilder,
-    private userService: UserService,
-    private toastController: ToastController
+    private userService: UserService
   ) {}
 
   /**
@@ -83,17 +84,6 @@ export class ReactiveFormPage {
     this.setLoading();
   }
 
-  /**
-   * Show the toast for 2 seconds
-   */
-  async presentToast() {
-    const toast = await this.toastController.create({
-      message: "Success! The user has been updated.",
-      duration: 2000,
-    });
-    toast.present();
-  }
-
   /* Buttons states functions */
 
   /**
@@ -108,7 +98,7 @@ export class ReactiveFormPage {
    */
   public setLoaded(): void {
     this.state = State.LOADED;
-    this.presentToast();
+    this.toast.presentToast();
   }
 
   /**

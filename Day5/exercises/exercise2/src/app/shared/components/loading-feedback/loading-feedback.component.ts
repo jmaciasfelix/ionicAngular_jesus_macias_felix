@@ -26,6 +26,4 @@ export class LoadingFeedbackComponent implements OnInit {
   retry(): void {
     this.retryPressed.emit(State.ERROR);
   }
-
-  
 }
