@@ -14,7 +14,7 @@ import { User, State } from "../../models";
   styleUrls: ["./reactive-form.page.scss"],
 })
 export class ReactiveFormPage {
-  public state: State.LOADING | State.LOADED | State.ERROR = State.LOADING;
+  public state: State.LOADING | State.LOADED | State.ERROR = State.LOADED;
   public user: User;
   public form: FormGroup = this.formBuilder.group({
     name: ["", [Validators.required, Validators.minLength(3)]],
@@ -50,15 +50,22 @@ export class ReactiveFormPage {
     this.reset();
     const user: User = this.userService.getStaticUser();
     this.form.patchValue(user);
+    this.state = State.LOADED;
   }
   /**
    * Reset form and load back user
    */
   public loadBackUser() {
+    this.state = State.LOADING;
     this.reset();
     this.userService.getUser().subscribe(
-      (user) => this.form.patchValue(user),
-      (error) => console.log(error)
+      (user) => {
+        this.form.patchValue(user);
+        this.state = State.LOADED;
+      },
+      () => {
+        this.state = State.ERROR;
+      }
     );
   }
   /**
@@ -75,32 +82,8 @@ export class ReactiveFormPage {
   }
   /**
    * Retry loas a user.
-   * @param state State error
    */
-  public loadUser(state: string): void {
-    this.setLoading();
-  }
-
-  /* Buttons states functions */
-
-  /**
-   * Set state to Loading
-   */
-  public setLoading(): void {
-    this.state = State.LOADING;
-  }
-
-  /**
-   * Set state to Loaded
-   */
-  public setLoaded(): void {
-    this.state = State.LOADED;
-  }
-
-  /**
-   * Set state to Error
-   */
-  public setError(): void {
-    this.state = State.ERROR;
+  public loadUser(): void {
+    this.loadBackUser();
   }
 }

@@ -9,8 +9,8 @@ import { State } from "../../../models";
   styleUrls: ["./loading-feedback.component.scss"],
 })
 export class LoadingFeedbackComponent implements OnInit {
-  @Input() state: State.LOADING | State.LOADED | State.ERROR = State.LOADING;
-  @Output() retryPressed = new EventEmitter<String>();
+  @Input() state: State.LOADING | State.LOADED | State.ERROR = State.LOADED;
+  @Output() retryPressed = new EventEmitter();
 
   public stateModel = State;
 
@@ -23,6 +23,6 @@ export class LoadingFeedbackComponent implements OnInit {
    * Retry function emit a event State.ERROR
    */
   retry(): void {
-    this.retryPressed.emit(State.ERROR);
+    this.retryPressed.emit();
   }
 }
