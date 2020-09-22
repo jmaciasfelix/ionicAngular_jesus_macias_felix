@@ -1,29 +1,38 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { User } from 'src/app/models/user.model';
-import { isNotTemporalEmailValidator } from 'src/app/shared/utils/validators';
-import { UserService } from 'src/app/shared/services/user.service';
+import { Component, OnInit } from "@angular/core";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { User } from "src/app/models/user.model";
+import { isNotTemporalEmailValidator } from "src/app/shared/utils/validators";
+import { UserService } from "src/app/shared/services/user.service";
+//models
+import { State } from "../../models";
 
 @Component({
-  selector: 'app-reactive-form',
-  templateUrl: './reactive-form.page.html',
-  styleUrls: ['./reactive-form.page.scss']
+  selector: "app-reactive-form",
+  templateUrl: "./reactive-form.page.html",
+  styleUrls: ["./reactive-form.page.scss"],
 })
 export class ReactiveFormPage implements OnInit {
+  public state: State.LOADING | State.LOADED | State.ERROR = State.LOADING;
   public user: User;
   public form: FormGroup = this.formBuilder.group({
-    name: ['', [Validators.required, Validators.minLength(3)]],
-    birthDate: ['', [Validators.required]],
-    sex: '',
-    phone: '',
-    email: ['', [Validators.required, Validators.email, isNotTemporalEmailValidator]]
+    name: ["", [Validators.required, Validators.minLength(3)]],
+    birthDate: ["", [Validators.required]],
+    sex: "",
+    phone: "",
+    email: [
+      "",
+      [Validators.required, Validators.email, isNotTemporalEmailValidator],
+    ],
   });
 
-  constructor(private formBuilder: FormBuilder, private userService: UserService) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private userService: UserService
+  ) {}
 
   public ngOnInit(): void {}
 
-  public submit(): void {
+  public submitForm(): void {
     this.user = this.form?.value;
   }
 
@@ -49,7 +58,20 @@ export class ReactiveFormPage implements OnInit {
       birthDate: null,
       sex: null,
       phone: null,
-      email: null
+      email: null,
     });
+  }
+  /*Util*/
+  public setLoading() {
+    console.log("Set Loading");
+    this.state = State.LOADING;
+  }
+  public setLoaded() {
+    console.log("Set Loaded");
+    this.state = State.LOADED;
+  }
+  public setError() {
+    console.log("Set Error");
+    this.state = State.ERROR;
   }
 }

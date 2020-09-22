@@ -1,26 +1,26 @@
-import { Component, OnInit, Input } from '@angular/core';
+//angular
+import { Component, OnInit, Input } from "@angular/core";
+//models
+import { State } from "../../../models";
 
 @Component({
-  selector: 'app-loading-feedback',
-  templateUrl: './loading-feedback.component.html',
-  styleUrls: ['./loading-feedback.component.scss']
+  selector: "app-loading-feedback",
+  templateUrl: "./loading-feedback.component.html",
+  styleUrls: ["./loading-feedback.component.scss"],
 })
 export class LoadingFeedbackComponent implements OnInit {
-  //TODO: Pasar a enum 
-  @Input() state: 'loading' | 'loaded' | 'error' = 'loading';
-  /**
-   * TODO:
-   * Loading -> Se carga el spinner
-   * Loaded -> Se carga ngContent
-   * Error -> Mensaje de error con boton para reiniciar
-   */
-  /**
-   * Click en retryButton se lanza un evento OUTPUT?
-   */
+  @Input() state: State.LOADING | State.LOADED | State.ERROR = State.LOADING;
+  public stateModel: object = State;
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log("Enum State")
+    console.log(State);
+    console.log(`Input state ${this.state}`);
+  }
 
-  retry() {}
+  retry() {
+    console.log("Retry");
+  }
 }

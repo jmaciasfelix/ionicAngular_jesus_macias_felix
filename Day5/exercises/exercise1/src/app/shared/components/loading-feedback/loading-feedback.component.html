@@ -1,6 +1,12 @@
-<ng-container *ngIf="state === 'loading'"> spinner </ng-container>
-<ng-container *ngIf="state === 'loaded'"> content </ng-container>
-<ng-container *ngIf="state === 'error'">
-  <p>Error</p>
-  <ion-button (click)="retry()">Reintentar</ion-button>
-</ng-container>
+<ion-content class="ion-padding" [ngSwitch]="state">
+  <ng-container *ngSwitchCase="stateModel.LOADING" class="ion-padding">
+    <app-spinner></app-spinner>
+  </ng-container>
+  <ng-container *ngSwitchCase="stateModel.LOADED" class="ion-padding">
+    <ng-content> </ng-content>
+  </ng-container>
+  <ng-container *ngSwitchCase="stateModel.ERROR" class="ion-padding">
+    <p>Error</p>
+    <ion-button (click)="retry()">Reintentar</ion-button>
+  </ng-container>
+</ion-content>
