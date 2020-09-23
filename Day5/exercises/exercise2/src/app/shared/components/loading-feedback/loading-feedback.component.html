@@ -1,0 +1,14 @@
+<div [ngSwitch]="state">
+  <ng-container *ngSwitchCase="stateModel.LOADING" class="ion-padding">
+    <app-spinner></app-spinner>
+  </ng-container>
+  <ng-container *ngSwitchCase="stateModel.LOADED" class="ion-padding">
+    <ng-content> </ng-content>
+  </ng-container>
+  <ng-container *ngSwitchCase="stateModel.ERROR" class="ion-padding">
+    <ion-text>
+      <h2>Error</h2>
+    </ion-text>
+    <ion-button (click)="retry()">Reintentar</ion-button>
+  </ng-container>
+</div>
