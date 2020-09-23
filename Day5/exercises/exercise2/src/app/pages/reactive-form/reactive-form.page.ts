@@ -7,7 +7,7 @@ import { isNotTemporalEmailValidator } from "src/app/shared/utils/validators";
 import { UserService, ToastService } from "src/app/shared/services/";
 //models
 import { User, State } from "../../models";
-import { ToastController } from '@ionic/angular';
+import { ToastController } from "@ionic/angular";
 
 @Component({
   selector: "app-reactive-form",
@@ -15,7 +15,7 @@ import { ToastController } from '@ionic/angular';
   styleUrls: ["./reactive-form.page.scss"],
 })
 export class ReactiveFormPage {
-  public state: State.LOADING | State.LOADED | State.ERROR = State.LOADING;
+  public state: State.LOADING | State.LOADED | State.ERROR = State.LOADED;
   public user: User;
   public form: FormGroup = this.formBuilder.group({
     name: ["", [Validators.required, Validators.minLength(3)]],
@@ -27,8 +27,8 @@ export class ReactiveFormPage {
       [Validators.required, Validators.email, isNotTemporalEmailValidator],
     ],
   });
-  
-  private toast: ToastService = new ToastService(new ToastController()); 
+
+  private toast: ToastService = new ToastService(new ToastController());
 
   /**
    * Contructor ReactiveForm
@@ -45,6 +45,7 @@ export class ReactiveFormPage {
    */
   public submitForm(): void {
     this.user = this.form?.value;
+    this.toast.presentToast("Updating summary", "tertiary");
   }
   /**
    * Reset form and load user.
@@ -53,19 +54,29 @@ export class ReactiveFormPage {
     this.reset();
     const user: User = this.userService.getStaticUser();
     this.form.patchValue(user);
+    this.state = State.LOADED;
+    this.toast.presentToast("Succesful Loaded", "success");
   }
   /**
    * Reset form and load back user
    */
   public loadBackUser() {
+    this.state = State.LOADING;
     this.reset();
     this.userService.getUser().subscribe(
-      (user) => this.form.patchValue(user),
-      (error) => console.log(error)
+      (user) => {
+        this.form.patchValue(user);
+        this.state = State.LOADED;
+        this.toast.presentToast("Succesful Loaded", "success");
+      },
+      () => {
+        this.state = State.ERROR;
+        this.toast.presentToast("Error Loaded", "danger");
+      }
     );
   }
   /**
-   * Reser form
+   * Reset form
    */
   public reset() {
     this.form.patchValue({
@@ -80,31 +91,7 @@ export class ReactiveFormPage {
    * Retry loas a user.
    * @param state State error
    */
-  public loadUser(state: string): void {
-    this.setLoading();
-  }
-
-  /* Buttons states functions */
-
-  /**
-   * Set state to Loading
-   */
-  public setLoading(): void {
-    this.state = State.LOADING;
-  }
-
-  /**
-   * Set state to Loaded
-   */
-  public setLoaded(): void {
-    this.state = State.LOADED;
-    this.toast.presentToast();
-  }
-
-  /**
-   * Set state to Error
-   */
-  public setError(): void {
-    this.state = State.ERROR;
+  public loadUser(): void {
+    this.loadBackUser();
   }
 }

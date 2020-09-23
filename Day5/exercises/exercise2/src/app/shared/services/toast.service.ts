@@ -15,10 +15,11 @@ export class ToastService {
   /**
    * Show a toast for 2 seconds
    */
-  async presentToast() {
+  async presentToast(msg: string, colorToast: string = "success") {
     const toast = await this.toastController.create({
-      message: 'Your settings have been saved.',
-      duration: 2000
+      message: msg,
+      duration: 2000,
+      color: colorToast
     });
     toast.present();
   }
