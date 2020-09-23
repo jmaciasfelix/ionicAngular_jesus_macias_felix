@@ -13,6 +13,7 @@ export class LoadingFeedbackComponent implements OnInit {
   @Output() retryPressed = new EventEmitter<String>();
 
   public stateModel = State;
+  public isDisableBtnSubmit = "false";
 
   /**
    * ngOnInit loadingfeedback

@@ -37,11 +37,10 @@
           <ion-input type="email" formControlName="email"></ion-input>
         </ion-item>
         <div class="ion-margin ion-text-right">
-          <ion-button type="submit" [disabled]="form.invalid">Submit</ion-button>
+          <ion-button type="submit" [disabled]="form.invalid || isDisable">Submit</ion-button>
         </div>
       </form>
     </div>
-    
   </app-loading-feedback>
   <!--Buttons-->
   <div>

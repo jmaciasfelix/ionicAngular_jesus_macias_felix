@@ -17,6 +17,7 @@ import { ToastController } from "@ionic/angular";
 export class ReactiveFormPage {
   public state: State.LOADING | State.LOADED | State.ERROR = State.LOADED;
   public user: User;
+  public isDisable: boolean;
   public form: FormGroup = this.formBuilder.group({
     name: ["", [Validators.required, Validators.minLength(3)]],
     birthDate: ["", [Validators.required]],
@@ -45,7 +46,17 @@ export class ReactiveFormPage {
    */
   public submitForm(): void {
     this.user = this.form?.value;
-    this.toast.presentToast("Updating summary", "tertiary");
+    this.isDisable = true;
+    this.userService.updateUser(this.user).subscribe(
+      () => {
+        this.toast.presentToast("Success update user from database");
+        this.isDisable = false;
+      },
+      () => {
+        this.toast.presentToast("Error update user from database", "danger");
+        this.isDisable = false;
+      }
+    );
   }
   /**
    * Reset form and load user.
