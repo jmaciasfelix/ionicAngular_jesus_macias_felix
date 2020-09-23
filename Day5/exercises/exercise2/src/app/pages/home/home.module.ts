@@ -7,12 +7,14 @@ import { RouterModule } from "@angular/router";
 import { IonicModule } from "@ionic/angular";
 //pages
 import { HomePage } from "./home.page";
+import { TranslateModule } from "@ngx-translate/core";
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    TranslateModule,
     RouterModule.forChild([
       {
         path: "",

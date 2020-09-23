@@ -1,0 +1,33 @@
+{
+    "MENU":{
+        "HOME": "Home",
+        "FORM_TEMPLATE": "Template driven form",
+        "FORM_REACTIVE": "Reactive form",
+        "LANG": "Languages"
+    },
+    "PAGE_HOME": {
+        "TITLE": "Home",
+        "ALERT": "Alert",
+        "ALERT_PROMISE": "Alert Promise"
+    },
+    "PAGE_REACT_FORM": {
+        "TITLE": "Reactive form",
+        "SECTIONS": {
+            "FORM":"Form",
+            "SUMMARY": "Summary"
+        },
+        "FORM": {
+            "NAME": "Name",
+            "BIRTHDATE": "Birthdate",
+            "SEX": "Sex",
+            "PHONE": "Phone",
+            "EMAIL": "Email"
+        },
+        "BUTTONS": {
+            "SUBMIT": "Submit",
+            "RESET_FORM":"Reset form",
+            "LOAD_STATIC": "Load user static",
+            "LOAD_BACKEND": "Load user backend"
+        }
+    }
+}

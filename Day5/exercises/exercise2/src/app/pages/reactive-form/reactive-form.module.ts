@@ -9,6 +9,8 @@ import { IonicModule } from "@ionic/angular";
 import { ReactiveFormPage } from "./reactive-form.page";
 //shared
 import { SharedModule } from "src/app/shared/shared.module";
+//translate
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -23,6 +25,7 @@ import { SharedModule } from "src/app/shared/shared.module";
     ]),
     ReactiveFormsModule,
     SharedModule,
+    TranslateModule
   ],
   declarations: [ReactiveFormPage],
 })

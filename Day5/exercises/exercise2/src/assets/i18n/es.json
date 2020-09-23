@@ -1,0 +1,33 @@
+{
+    "MENU":{
+        "HOME": "Inicio",
+        "FORM_TEMPLATE": "Formulario Template Driven",
+        "FORM_REACTIVE": "Formulario Reactivo",
+        "LANG": "Idiomas"
+    },
+    "PAGE_HOME": {
+        "TITLE": "Inicio",
+        "ALERT": "Alerta",
+        "ALERT_PROMISE": "Alerta promesa"
+    },
+    "PAGE_REACT_FORM": {
+        "TITLE": "Formulario reactivo",
+        "SECTIONS": {
+            "FORM":"Formulario",
+            "SUMMARY": "Resumen"
+        },
+        "FORM": {
+            "NAME": "Nombre",
+            "BIRTHDATE": "Cumpleaños",
+            "SEX": "Sexo",
+            "PHONE": "Teléfono",
+            "EMAIL": "Correo Electrónico"
+        },
+        "BUTTONS": {
+            "SUBMIT": "Enviar",
+            "RESET_FORM":"Limpiar formulario",
+            "LOAD_STATIC": "Cargar usuarios estático",
+            "LOAD_BACKEND": "Cargar usuarios backend"
+        }
+    }
+}
