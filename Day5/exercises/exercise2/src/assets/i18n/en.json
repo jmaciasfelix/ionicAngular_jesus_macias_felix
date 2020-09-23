@@ -7,6 +7,7 @@
     },
     "PAGE_HOME": {
         "TITLE": "Home",
+        "DESCRIPTION": "Simple application to ilustrate how to create forms",
         "ALERT": "Alert",
         "ALERT_PROMISE": "Alert Promise"
     },
@@ -20,6 +21,10 @@
             "NAME": "Name",
             "BIRTHDATE": "Birthdate",
             "SEX": "Sex",
+            "TYPE_SEX": {
+                "MALE": "Male",
+                "FEMALE": "Female"
+            },
             "PHONE": "Phone",
             "EMAIL": "Email"
         },
@@ -29,5 +34,18 @@
             "LOAD_STATIC": "Load user static",
             "LOAD_BACKEND": "Load user backend"
         }
+    },
+    "PAGE_TEMPLATE_FORM": {
+        "TITLE": "Template driven form",
+        "FORM": {
+            "NAME": "Name",
+            "SURNAME": "Surname"
+        }
+    },
+    "TOAST":{
+        "SUCCESS_LOADED": "Succesful Loaded",
+        "ERROR_LOADED": "Error Loaded",
+        "SUCCESS_UPDATE": "Success update user from database",
+        "ERROR_UPDATE": "Error update user from database"
     }
 }

@@ -7,6 +7,7 @@ import { RouterModule } from "@angular/router";
 import { IonicModule } from "@ionic/angular";
 ///page
 import { TemplateDrivenFormPage } from "./template-driven-form.page";
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import { TemplateDrivenFormPage } from "./template-driven-form.page";
         component: TemplateDrivenFormPage,
       },
     ]),
+    TranslateModule
   ],
   declarations: [TemplateDrivenFormPage],
 })

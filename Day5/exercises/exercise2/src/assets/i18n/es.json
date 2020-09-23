@@ -7,6 +7,7 @@
     },
     "PAGE_HOME": {
         "TITLE": "Inicio",
+        "DESCRIPTION": "Simple aplicación para mostrar la creación de formularios.",
         "ALERT": "Alerta",
         "ALERT_PROMISE": "Alerta promesa"
     },
@@ -20,6 +21,10 @@
             "NAME": "Nombre",
             "BIRTHDATE": "Cumpleaños",
             "SEX": "Sexo",
+            "TYPE_SEX": {
+                "MALE": "Hombre",
+                "FEMALE": "Mujer"
+            },
             "PHONE": "Teléfono",
             "EMAIL": "Correo Electrónico"
         },
@@ -29,5 +34,18 @@
             "LOAD_STATIC": "Cargar usuarios estático",
             "LOAD_BACKEND": "Cargar usuarios backend"
         }
+    },
+    "PAGE_TEMPLATE_FORM": {
+        "TITLE": "Formulario Template Driven",
+        "FORM": {
+            "NAME": "Nombre",
+            "SURNAME": "Apellido"
+        }
+    },
+    "TOAST":{
+        "SUCCESS_LOADED": "Se cargan los datos correctamente",
+        "ERROR_LOADED": "Error al cargar los datos",
+        "SUCCESS_UPDATE": "Se ha actualizado el usuario correctamente.",
+        "ERROR_UPDATE": "Error al actualizar el usuario."
     }
 }

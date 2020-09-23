@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-  <p>Simple application to ilustrate how to create forms</p>
-  <ion-button (click)="presentAlertMultipleButtons()">Alerta</ion-button>
-  <ion-button (click)="alertWithPromise()">Alerta Promesa</ion-button>
+  <p>{{"PAGE_HOME.DESCRIPTION" | translate}}</p>
+  <ion-button (click)="presentAlertMultipleButtons()">{{"PAGE_HOME.ALERT" | translate}}</ion-button>
+  <ion-button (click)="alertWithPromise()">{{"PAGE_HOME.ALERT_PROMISE" | translate}}</ion-button>
 </ion-content>

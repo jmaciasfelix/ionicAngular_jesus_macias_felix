@@ -8,6 +8,7 @@ import { UserService, ToastService } from "src/app/shared/services/";
 //models
 import { User, State } from "../../models";
 import { ToastController } from "@ionic/angular";
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: "app-reactive-form",
@@ -30,15 +31,18 @@ export class ReactiveFormPage {
   });
 
   private toast: ToastService = new ToastService(new ToastController());
+  
 
   /**
    * Contructor ReactiveForm
    * @param formBuilder FormBuilder angular
    * @param userService Service to get user
+   * @param translateService Service i18n translate
    */
   constructor(
     private formBuilder: FormBuilder,
-    private userService: UserService
+    private userService: UserService,
+    private translateService: TranslateService
   ) {}
 
   /**
@@ -49,11 +53,11 @@ export class ReactiveFormPage {
     this.isDisable = true;
     this.userService.updateUser(this.user).subscribe(
       () => {
-        this.toast.presentToast("Success update user from database");
+        this.toast.presentToast(this.translateService.instant("TOAST.SUCCESS_UPDATE"));
         this.isDisable = false;
       },
       () => {
-        this.toast.presentToast("Error update user from database", "danger");
+        this.toast.presentToast(this.translateService.instant("TOAST.ERROR_UPDATE"), "danger");
         this.isDisable = false;
       }
     );
@@ -66,7 +70,7 @@ export class ReactiveFormPage {
     const user: User = this.userService.getStaticUser();
     this.form.patchValue(user);
     this.state = State.LOADED;
-    this.toast.presentToast("Succesful Loaded", "success");
+    this.toast.presentToast(this.translateService.instant("TOAST.SUCCESS_LOADED"), "success");
   }
   /**
    * Reset form and load back user
@@ -78,11 +82,11 @@ export class ReactiveFormPage {
       (user) => {
         this.form.patchValue(user);
         this.state = State.LOADED;
-        this.toast.presentToast("Succesful Loaded", "success");
+        this.toast.presentToast(this.translateService.instant("TOAST.SUCCESS_LOADED"), "success");
       },
       () => {
         this.state = State.ERROR;
-        this.toast.presentToast("Error Loaded", "danger");
+        this.toast.presentToast(this.translateService.instant("TOAST.ERROR_LOADED"), "danger");
       }
     );
   }
