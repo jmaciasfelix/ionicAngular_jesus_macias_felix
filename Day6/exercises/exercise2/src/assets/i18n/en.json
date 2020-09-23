@@ -1,0 +1,8 @@
+{
+  "HELLO": "Hello",
+  "HELLO_NAME": "Hello {{ name }}",
+  "HOMEPAGE": {
+    "TITLE": "Homepage"
+  },
+  "STATUS_NOTICE": "The service is {{ status }}"
+}
