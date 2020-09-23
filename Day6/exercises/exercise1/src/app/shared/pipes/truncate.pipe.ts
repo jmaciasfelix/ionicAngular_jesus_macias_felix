@@ -1,13 +1,20 @@
-import { Pipe, PipeTransform, Injectable } from '@angular/core';
+import { Pipe, PipeTransform, Injectable } from "@angular/core";
 
 @Pipe({
-  name: 'truncate'
+  name: "truncate",
 })
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
+
 export class TruncatePipe implements PipeTransform {
   transform(text: string, n: number = 0): string {
-    return !n || text.length < n ? text : text.substring(0, n) + '...';
+    const arrayStr = text.split(" ");
+    let newStr = "";
+    arrayStr.forEach((elemento) => {
+      newStr.length < n ? (newStr += " " + elemento) : null;
+    });
+    newStr += "...";
+    return newStr;
   }
 }
