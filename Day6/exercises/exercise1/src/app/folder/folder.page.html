@@ -31,8 +31,13 @@
 
     <h1>Custom Pipes</h1>
 
-    <p>{{ 'Lorem Ipsum is simply dummy text of the printing and typesetting industry' | truncate }}</p>
-    <p>{{ 'Lorem Ipsum is simply dummy text of the printing and typesetting industry' | truncate: 10 }}</p>
+    <p>
+      {{ ‘El veloz murciélago hindú comía feliz cardillo y kiwi’ | truncate:40 }}
+    </p>
+    <p>
+      {{ 'Lorem Ipsum is simply dummy text of the printing and typesetting
+      industry' | truncate: 10 }}
+    </p>
 
     <h1>i18n</h1>
 
@@ -47,7 +52,12 @@
     <img *ngIf="base64Image" [src]="base64Image" />
 
     <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-      <ion-fab-button ion-fab size="large" color="primary" (click)="presentCamera()">
+      <ion-fab-button
+        ion-fab
+        size="large"
+        color="primary"
+        (click)="presentCamera()"
+      >
         <ion-icon size="large" name="camera"></ion-icon>
       </ion-fab-button>
     </ion-fab>
