@@ -30,14 +30,29 @@
     <p>{{ 12 | number: '3.0-3' }}</p>
 
     <h1>Custom Pipes</h1>
-
-    <p>
-      {{ 'El veloz murciélago hindú comía feliz cardillo y kiwi' | truncate:40 }}
-    </p>
-    <p>
-      {{ 'Lorem Ipsum is simply dummy text of the printing and typesetting
-      industry' | truncate: 10 }}
-    </p>
+    <div class="container-truncate">
+      <p>
+        ---------------------------------------------------------------------
+      </p>
+      <p>
+        {{ 'El veloz murciélago hindú comía feliz cardillo y kiwi' | truncate:40
+        }}
+      </p>
+      <p>
+        {{ 'El veloz murciélago hindú comía feliz cardillo y kiwi' |
+        truncate:5:'words' }}
+      </p>
+      <p>
+        {{ 'El veloz murciélago hindú comía feliz cardillo y kiwi' |
+        truncate:0:'words' }}
+      </p>
+      <p>
+        {{ 'El veloz murciélago hindú comía feliz cardillo y kiwi' | truncate }}
+      </p>
+      <p>
+        ---------------------------------------------------------------------
+      </p>
+    </div>
 
     <h1>i18n</h1>
 
@@ -45,7 +60,6 @@
     <p translate>{{ 'HELLO' }}</p>
     <p>{{ 'HELLO_NAME' | translate: {name: 'Patata'} }}</p>
     <p translate [translateParams]="{name: 'Patata'}">{{ 'HELLO_NAME' }}</p>
-    <p>{{ 'HOMEPAGE.TITLE' | translate | truncate: 4 }}</p>
 
     <ion-button (click)="presentToast()">Toast</ion-button>
 
