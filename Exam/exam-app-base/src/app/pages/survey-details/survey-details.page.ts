@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { LoadingController, ToastController } from "@ionic/angular";
 import { TranslateService } from "@ngx-translate/core";
-import { Survey } from "src/app/shared/models";
+import { Survey, SurveyOption } from "src/app/shared/models";
 import { SurveysService } from "src/app/shared/services/surveys.service";
 import { ToastService } from "src/app/shared/services/toast.service";
 
@@ -13,6 +13,8 @@ import { ToastService } from "src/app/shared/services/toast.service";
 })
 export class SurveyDetailsPage implements OnInit {
   public survey: Survey;
+  public surveyOption: SurveyOption[];
+  public percentage: string[] = ["1", "2", "3", "4", "5"];
   public isVisible: boolean = false;
   public isDisabled: boolean = false;
   private toast: ToastService = new ToastService(new ToastController());
@@ -40,12 +42,11 @@ export class SurveyDetailsPage implements OnInit {
       (survey) => {
         this.survey = survey;
         this.isVisible = true;
-        this.toast.presentToast(
-          this.translateService.instant("SUCCESS.LOADING_DATA")
-        );
+        if (survey.answered) {
+          this.calculatePercentage();
+        }
       },
       () => {
-        //TODO toast error redirect back
         this.toast.presentToast(
           this.translateService.instant("ERROR.LOADING_DATA", "danger")
         );
@@ -63,6 +64,15 @@ export class SurveyDetailsPage implements OnInit {
       (error) => {
         this.isDisabled = false;
       }
+    );
+  }
+
+  public calculatePercentage(): void {
+    let totalVotes = 0;
+    this.surveyOption = this.survey.options;
+    this.surveyOption.forEach(({ num_votes }) => (totalVotes += num_votes));
+    this.percentage = this.surveyOption.map(
+      ({ num_votes }) => ((num_votes * 100) / totalVotes).toFixed(2) + "%"
     );
   }
 }

@@ -34,14 +34,9 @@ export class SurveysListPage {
     this.surveysService.getSurveys().subscribe(
       (surveys: SurveyRow[]) => {
         this.surveys = surveys;
-        console.log(surveys);
-        this.toast.presentToast(
-          this.translateService.instant("SUCCESS.LOADING_DATA")
-        );
         this.isVisible = true;
       },
-      (error) => {
-        console.log("LOAD SURVEYS ERROR", error);
+      () => {
         this.authService.logout();
         this.toast.presentToast(
           this.translateService.instant("ERRORS.LOADING_DATA", "danger")
