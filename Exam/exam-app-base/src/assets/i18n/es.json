@@ -1,30 +1,31 @@
 {
-  "LOGIN": {
-    "TITLE": "Acceso a encuestas",
-    "FIELDS": {
-      "EMAIL": "Email",
-      "PASSWORD": "Password"
+    "LOGIN": {
+      "TITLE": "Acceso a encuestas",
+      "FIELDS": {
+        "EMAIL": "Email",
+        "PASSWORD": "Password"
+      },
+      "BUTTONS": {
+        "ACCESS": "Acceder"
+      },
+      "ERRORS": {
+        "AUTH": "Las credenciales introducidas no son correctas."
+      }
     },
+    "SURVEYS_LIST": {
+      "TITLE": "Encuestas disponibles"
+    },
+    "SURVEY": {},
     "BUTTONS": {
-      "ACCESS": "Acceder"
+      "ACCEPT": "Aceptar",
+      "CANCEL": "Cancelar",
+      "ADD": "Añadir",
+      "UPDATE": "Actualizar",
+      "DELETE": "Eliminar"
     },
     "ERRORS": {
-      "AUTH": "Las credenciales introducidas no son correctas."
+      "LOADING_DATA": "Ha ocurrido un problema cargando la información. Por favor, vuelva a intentarlo.",
+      "NOT_CONTROLLED": "Ha ocurrido un problema no controlado. Por favor, póngase en contacto con el administrador."
     }
-  },
-  "SURVEYS_LIST": {
-    "TITLE": "Encuestas disponibles"
-  },
-  "SURVEY": {},
-  "BUTTONS": {
-    "ACCEPT": "Aceptar",
-    "CANCEL": "Cancelar",
-    "ADD": "Añadir",
-    "UPDATE": "Actualizar",
-    "DELETE": "Eliminar"
-  },
-  "ERRORS": {
-    "LOADING_DATA": "Ha ocurrido un problema cargando la información. Por favor, vuelva a intentarlo.",
-    "NOT_CONTROLLED": "Ha ocurrido un problema no controlado. Por favor, póngase en contacto con el administrador."
   }
-}
+  
