@@ -9,4 +9,17 @@ export class HomePage {
 
   constructor() {}
 
+  /** TODO
+   * 
+   */
+  public loadPosts(){
+    console.log("TODO: LoadPost");
+  }
+
+  /** TODO
+   * 
+   */
+  public clearList(){
+    console.log("TODO: clearList");
+  }
 }

@@ -1,5 +1,10 @@
 {
   "PAGE_HOME": {
-    "TITLE": "Inicio"
+    "TITLE": "Inicio",
+    "POST_TITLE": "Mensajes del post"
+  },
+  "BUTTONS": {
+    "CLEAR": "Limpiar",
+    "LOAD": "Cargar"
   }
 }

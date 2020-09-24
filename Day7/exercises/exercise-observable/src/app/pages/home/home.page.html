@@ -1,8 +1,6 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      {{"PAGE_HOME.TITLE"|translate}}
-    </ion-title>
+  <ion-toolbar color="primary">
+    <ion-title> {{"PAGE_HOME.TITLE"|translate}} </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -13,8 +11,16 @@
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-list>
+    <ion-list-header class="ion-padding">
+      <ion-label><h1>{{"PAGE_HOME.POST_TITLE" | translate}}</h1></ion-label>
+      <ion-button color="secundary" (click)="loadPosts()">{{"BUTTONS.LOAD"| translate}}</ion-button>
+      <ion-button color="danger" (click)="clearList()">{{"BUTTONS.CLEAR"| translate}}</ion-button>
+    </ion-list-header>
+    <ion-item>
+      <ion-label>
+        <h2>I got you babe</h2>
+      </ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>
