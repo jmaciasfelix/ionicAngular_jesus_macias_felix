@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
 import { AlertController } from "@ionic/angular";
 import { TranslateService } from "@ngx-translate/core";
 
@@ -11,7 +11,7 @@ import { SurveysService } from "src/app/shared/services/surveys.service";
   templateUrl: "./surveys-list.page.html",
   styleUrls: ["./surveys-list.page.scss"],
 })
-export class SurveysListPage implements OnInit {
+export class SurveysListPage {
   public surveys: SurveyRow[];
 
   constructor(
@@ -21,26 +21,17 @@ export class SurveysListPage implements OnInit {
     private translateService: TranslateService
   ) {}
 
-  public ngOnInit(): void {
-    this.loadSurveys(); // It's the correct position of call? https://ionicframework.com/docs/angular/lifecycle
-
-    // TODO: REMOVEME It's just an example of how to use websockets!
-    /**
-      this.surveysService
-      .getSurveysUpdates()
-      .subscribe((surverys: SurveyBase[]) => {
-        console.log("SURVEYS UPDATE!", surverys);
-      });
-     */
+  ionViewWillEnter() {
+    this.loadSurveys();
   }
 
   private loadSurveys(): void {
     this.surveysService.getSurveys().subscribe(
       (surveys: SurveyRow[]) => {
-        console.log("LOAD SURVEYS OK", surveys);
         this.surveys = surveys;
       },
       (error) => {
+        //TOAST and RETRY
         console.log("LOAD SURVEYS ERROR", error);
       }
     );

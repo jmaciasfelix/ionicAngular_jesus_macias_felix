@@ -5,6 +5,7 @@ import { tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
 import { AuthCredentials, AuthResponse } from '../models';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,7 @@ export class AuthService {
   }
 
   public login(authCredentials: AuthCredentials): Observable<AuthResponse> {
-    return this.http.post<AuthResponse>('http://207.154.215.142:3000/api/auth/login', authCredentials).pipe(
+    return this.http.post<AuthResponse>(`${environment.apiUrl}/auth/login`, authCredentials).pipe(
       tap((authResponse: AuthResponse) => {
         this.accessToken = authResponse.access_token;
         sessionStorage.setItem(this.accessTokenKey, this.accessToken);
