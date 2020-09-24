@@ -13,7 +13,9 @@
       }
     },
     "SURVEYS_LIST": {
-      "TITLE": "Encuestas disponibles"
+      "TITLE": "Encuestas disponibles",
+      "ALERT_TITLE": "Confirm Logout.",
+      "ALERT_DESCRIPTION": "Do you want to close the session?"
     },
     "SURVEY": {},
     "BUTTONS": {

@@ -13,7 +13,9 @@
     }
   },
   "SURVEYS_LIST": {
-    "TITLE": "Encuestas disponibles"
+    "TITLE": "Encuestas disponibles",
+    "ALERT_TITLE": "Confimar cerrar sesión.",
+    "ALERT_DESCRIPTION": "¿Deseas cerrar la sesión.?"
   },
   "SURVEY": {},
   "BUTTONS": {

@@ -25,10 +25,12 @@ export class LoginPage {
 
     this.authService.login({ email: email, password: password }).subscribe(
       () => {
+        //TODO Avisar al user
         console.log("LOGIN OK");
         this.router.navigate(["/surveys-list"]);
       },
       (error) => {
+        //TODO avisar error al user
         console.log("LOGIN ERROR", error);
       }
     );
