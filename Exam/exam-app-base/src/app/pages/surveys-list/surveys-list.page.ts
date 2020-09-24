@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { Router } from "@angular/router";
 import { AlertController, ToastController } from "@ionic/angular";
 import { TranslateService } from "@ngx-translate/core";
 
@@ -15,11 +16,13 @@ import { ToastService } from "src/app/shared/services/toast.service";
 export class SurveysListPage {
   public surveys: SurveyRow[];
   private toast: ToastService = new ToastService(new ToastController());
+  public isVisible: boolean = false;
 
   constructor(
     private authService: AuthService,
     private surveysService: SurveysService,
     public alertController: AlertController,
+    private router: Router,
     private translateService: TranslateService
   ) {}
 
@@ -31,16 +34,19 @@ export class SurveysListPage {
     this.surveysService.getSurveys().subscribe(
       (surveys: SurveyRow[]) => {
         this.surveys = surveys;
+        console.log(surveys);
         this.toast.presentToast(
           this.translateService.instant("SUCCESS.LOADING_DATA")
         );
+        this.isVisible = true;
       },
       (error) => {
-        //TOAST and RETRY
         console.log("LOAD SURVEYS ERROR", error);
+        this.authService.logout();
         this.toast.presentToast(
-          this.translateService.instant("ERRORS.LOADING_DATA","danger")
+          this.translateService.instant("ERRORS.LOADING_DATA", "danger")
         );
+        this.router.navigate(["/login"]);
       }
     );
   }

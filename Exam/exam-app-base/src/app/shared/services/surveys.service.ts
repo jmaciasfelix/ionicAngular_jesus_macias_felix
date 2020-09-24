@@ -25,6 +25,17 @@ export class SurveysService {
     });
   }
 
+  public updateSurveysById(idSurvey: number, idOption: number): Observable<Survey> {
+    console.log("update");
+    return this.http.post<Survey>(
+      `${environment.apiUrl}/survey/${idSurvey}`,
+      {"option": idOption},
+      {
+        headers: this.authService.getAuthHeaders(),
+      }
+    );
+  }
+
   public getSurveysUpdates(): Subject<SurveyBase[]> {
     return webSocket(`${environment.sockectUrl}/votes`);
   }

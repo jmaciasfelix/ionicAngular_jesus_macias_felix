@@ -14,6 +14,7 @@ import { ToastService } from "src/app/shared/services/toast.service";
 export class SurveyDetailsPage implements OnInit {
   public survey: Survey;
   public isVisible: boolean = false;
+  public isDisabled: boolean = false;
   private toast: ToastService = new ToastService(new ToastController());
 
   constructor(
@@ -33,24 +34,34 @@ export class SurveyDetailsPage implements OnInit {
   }
 
   ngOnInit() {
-    console.log("Entro");
     this.presentLoading();
     const idSurvey: string = this.activatedRoute.snapshot.paramMap.get("id");
     this.surveysService.getSurveyById(idSurvey).subscribe(
       (survey) => {
-        console.log(survey);
         this.survey = survey;
         this.isVisible = true;
         this.toast.presentToast(
           this.translateService.instant("SUCCESS.LOADING_DATA")
         );
       },
-      (error) => {
+      () => {
         //TODO toast error redirect back
         this.toast.presentToast(
           this.translateService.instant("ERROR.LOADING_DATA", "danger")
         );
         this.router.navigate([`/surveys-list`]);
+      }
+    );
+  }
+  public sendOption(idOption: number): void {
+    const id: number = this.survey.id;
+    this.isDisabled = true;
+    this.surveysService.updateSurveysById(id, idOption).subscribe(
+      (exito) => {
+        this.router.navigate([`/surveys-list`]);
+      },
+      (error) => {
+        this.isDisabled = false;
       }
     );
   }
