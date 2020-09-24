@@ -13,7 +13,7 @@ export class SurveysService {
   constructor(private authService: AuthService, private http: HttpClient) {}
 
   public getSurveys(): Observable<SurveyRow[]> {
-    return this.http.get<SurveyRow[]>('.../api/survey', { headers: this.authService.getAuthHeaders() });
+    return this.http.get<SurveyRow[]>('http://207.154.215.142:3000/api/survey', { headers: this.authService.getAuthHeaders() });
   }
 
   public getSurveysUpdates(): Subject<SurveyBase[]> {
