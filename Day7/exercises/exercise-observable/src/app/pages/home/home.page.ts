@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PostService } from 'src/app/shared/services/post.service';
 
 @Component({
   selector: 'app-home',
@@ -7,13 +8,14 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  constructor(private postService: PostService) {}
 
   /** TODO
    * 
    */
   public loadPosts(){
     console.log("TODO: LoadPost");
+    this.postService.loadPosts();
   }
 
   /** TODO
