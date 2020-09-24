@@ -14,7 +14,7 @@ import { ToastService } from "src/app/shared/services/toast.service";
 export class SurveyDetailsPage implements OnInit {
   public survey: Survey;
   public surveyOption: SurveyOption[];
-  public percentage: string[] = ["1", "2", "3", "4", "5"];
+  public percentage: string[] = ["0", "1", "2", "3", "4", "5"];
   public isVisible: boolean = false;
   public isDisabled: boolean = false;
   private toast: ToastService = new ToastService(new ToastController());
