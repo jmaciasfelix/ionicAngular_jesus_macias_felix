@@ -15,7 +15,8 @@
     <ion-item *ngFor="let option of survey.options" lines="none">
       <ion-label color="primary"> {{option.value}} </ion-label>
       <ion-checkbox  [hidden]="survey.answered" [disabled]="isDisabled" color="secondary" (click)="sendOption(option.id)"></ion-checkbox>
-      <ion-text [hidden]="!survey.answered">{{percentage[option.id-1]}}</ion-text>
+      <ion-text *ngIf="survey.answered">{{percentage[option.id-1]}}</ion-text>
     </ion-item>
+    <ion-button (click)="retractOption()" color="danger" *ngIf="survey.answered">Retractar</ion-button>
   </ion-list>
 </ion-content>

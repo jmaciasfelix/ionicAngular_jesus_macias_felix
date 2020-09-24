@@ -14,7 +14,7 @@ import { ToastService } from "src/app/shared/services/toast.service";
 export class SurveyDetailsPage implements OnInit {
   public survey: Survey;
   public surveyOption: SurveyOption[];
-  public percentage: string[] = ["0", "1", "2", "3", "4", "5"];
+  public percentage: string[];
   public isVisible: boolean = false;
   public isDisabled: boolean = false;
   private toast: ToastService = new ToastService(new ToastController());
@@ -73,6 +73,21 @@ export class SurveyDetailsPage implements OnInit {
     this.surveyOption.forEach(({ num_votes }) => (totalVotes += num_votes));
     this.percentage = this.surveyOption.map(
       ({ num_votes }) => ((num_votes * 100) / totalVotes).toFixed(2) + "%"
+    );
+  }
+
+  public retractOption(): void{
+    console.log("retract")
+    this.surveysService.deleteVote(this.survey.id).subscribe(
+      (exito) => {
+        this.router.navigate([`/surveys-list`]);
+        this.toast.presentToast(
+          this.translateService.instant("SUCCESS.RETRACT")
+        );
+      },
+      (error) => {
+        this.isDisabled = false;
+      }
     );
   }
 }
