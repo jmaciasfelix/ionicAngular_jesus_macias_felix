@@ -1,10 +1,20 @@
-<ion-header [translucent]="true">
+<ion-header *ngIf="isVisible" [translucent]="true">
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-back-button [defaultHref]="'/surveys-list'"></ion-back-button>
     </ion-buttons>
-    <ion-title>Hola</ion-title>
+    <ion-title>{{survey?.title}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content> Hola se carga correctamente </ion-content>
+<ion-content *ngIf="isVisible">
+  <ion-list>
+    <ion-list-header lines="inset">
+      <ion-label><h1>{{survey?.statement}}</h1></ion-label>
+    </ion-list-header>
+    <ion-item *ngFor="let option of survey.options" lines="none">
+      <ion-label color="primary"> {{option?.value}} </ion-label>
+      <ion-checkbox color="secondary"></ion-checkbox>
+    </ion-item>
+  </ion-list>
+</ion-content>

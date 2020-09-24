@@ -39,7 +39,7 @@ export class SurveysListPage {
         //TOAST and RETRY
         console.log("LOAD SURVEYS ERROR", error);
         this.toast.presentToast(
-          this.translateService.instant("ERRORS.LOADING_DATA")
+          this.translateService.instant("ERRORS.LOADING_DATA","danger")
         );
       }
     );
@@ -61,7 +61,9 @@ export class SurveysListPage {
           text: this.translateService.instant("BUTTONS.ACCEPT"),
           handler: () => {
             this.authService.logout();
-            //TODO alert toast success
+            this.toast.presentToast(
+              this.translateService.instant("SUCCESS.LOGOUT")
+            );
           },
         },
       ],

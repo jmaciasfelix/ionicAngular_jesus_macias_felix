@@ -31,6 +31,8 @@
   },
   "SUCCESS": {
     "LOADING_DATA": "Se han cargado los datos correctamente",
-    "AUTHENTICATION": "Se ha atenticado correctamente"
-  }
+    "AUTHENTICATION": "Se ha autenticado correctamente",
+    "LOGOUT": "Ha cerrado sesión correctamente"
+  },
+  "LOADING": "Cargando, espere..."
 }
