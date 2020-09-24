@@ -28,5 +28,9 @@
   "ERRORS": {
     "LOADING_DATA": "Ha ocurrido un problema cargando la información. Por favor, vuelva a intentarlo.",
     "NOT_CONTROLLED": "Ha ocurrido un problema no controlado. Por favor, póngase en contacto con el administrador."
+  },
+  "SUCCESS": {
+    "LOADING_DATA": "Se han cargado los datos correctamente",
+    "AUTHENTICATION": "Se ha atenticado correctamente"
   }
 }

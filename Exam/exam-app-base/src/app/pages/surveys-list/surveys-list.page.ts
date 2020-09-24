@@ -1,10 +1,11 @@
 import { Component } from "@angular/core";
-import { AlertController } from "@ionic/angular";
+import { AlertController, ToastController } from "@ionic/angular";
 import { TranslateService } from "@ngx-translate/core";
 
 import { SurveyBase, SurveyRow } from "src/app/shared/models";
 import { AuthService } from "src/app/shared/services/auth.service";
 import { SurveysService } from "src/app/shared/services/surveys.service";
+import { ToastService } from "src/app/shared/services/toast.service";
 
 @Component({
   selector: "app-surveys-list",
@@ -13,6 +14,7 @@ import { SurveysService } from "src/app/shared/services/surveys.service";
 })
 export class SurveysListPage {
   public surveys: SurveyRow[];
+  private toast: ToastService = new ToastService(new ToastController());
 
   constructor(
     private authService: AuthService,
@@ -29,10 +31,16 @@ export class SurveysListPage {
     this.surveysService.getSurveys().subscribe(
       (surveys: SurveyRow[]) => {
         this.surveys = surveys;
+        this.toast.presentToast(
+          this.translateService.instant("SUCCESS.LOADING_DATA")
+        );
       },
       (error) => {
         //TOAST and RETRY
         console.log("LOAD SURVEYS ERROR", error);
+        this.toast.presentToast(
+          this.translateService.instant("ERRORS.LOADING_DATA")
+        );
       }
     );
   }

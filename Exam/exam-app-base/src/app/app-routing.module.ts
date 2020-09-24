@@ -18,6 +18,10 @@ const routes: Routes = [
     path: 'surveys-list',
     canActivate: [AuthGuard], // Only auth users can enter here!
     loadChildren: () => import('./pages/surveys-list/surveys-list.module').then((m) => m.SurveysListPageModule)
+  },
+  {
+    path: 'survey-details',
+    loadChildren: () => import('./pages/survey-details/survey-details.module').then( m => m.SurveyDetailsPageModule)
   }
 ];
 
