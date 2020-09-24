@@ -1,5 +1,9 @@
 import { Component } from "@angular/core";
-import { PostService } from "src/app/shared/services/post.service";
+import { PostService, BrandService } from "src/app/shared/services";
+import { map, switchMap, take, tap, filter } from "rxjs/operators";
+import { Observable, zip } from "rxjs";
+import { Post, Brands } from "src/app/shared/models";
+import { element } from "protractor";
 
 @Component({
   selector: "app-home",
@@ -7,22 +11,63 @@ import { PostService } from "src/app/shared/services/post.service";
   styleUrls: ["home.page.scss"],
 })
 export class HomePage {
-  public messages: string[] = ["msg1","msg2","msg3"];
+  public messages: string[];
 
-  constructor(private postService: PostService) {}
+  constructor(
+    private postService: PostService,
+    private brandService: BrandService
+  ) {}
 
   /** TODO
    *
    */
-  public loadPosts() {
-    console.log("TODO: LoadPost");
-    this.postService.loadPosts();
+  public loadPosts(): void {
+    const post$: Observable<Post[]> = this.postService.getPost();
+    const brand$: Observable<Brands[]> = this.brandService.getBrands();
+
+    zip(post$, brand$)
+      .pipe(
+        take(1),
+        map((data) => this.processMsg(data))
+      )
+      .subscribe(
+        (messages) => {
+          this.messages = messages;
+        },
+        (error) => console.log(error)
+      );
+  }
+
+  private processMsg(data: object): string[] {
+    const arrayNew: string[] = [];
+    const arrayMsg: string[] = data[0].map(({ message }) => message);
+    const arrayRestricBrands: string[] = data[1]
+      .filter((brand: Brands) => !brand.isSoldByUs)
+      .map(({ name }) => name);
+
+    arrayMsg.forEach((msg) => {
+      let isRestrict: boolean = false;
+      let brandRestrict: string;
+      arrayRestricBrands.forEach((brand) => {
+        if (isRestrict === false && msg.includes(brand)) {
+          brandRestrict = brand;
+          isRestrict = true;
+        }
+      });
+      if (isRestrict) {
+        arrayNew.push(msg.replace(brandRestrict, "******"));
+      } else {
+        arrayNew.push(msg);
+      }
+    });
+
+    return arrayNew;
   }
 
   /** TODO
    *
    */
-  public clearList() {
+  public clearList(): void {
     console.log("TODO: clearList");
     this.messages = [];
   }

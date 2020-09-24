@@ -1,32 +1,25 @@
-import { Injectable } from '@angular/core';
+import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
+import { environment } from "src/environments/environment";
 import { Post, Brands } from "../models";
+import { BrandService } from "./brand.service";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class PostService {
-
-  constructor() { }
+  public brands: Brands[];
+  public posts;
+  constructor(
+    private httpClient: HttpClient,
+    private brandService: BrandService
+  ) {}
 
   /** TODO
-   * 
+   *
    */
-  public loadPosts(){
-    console.log("TODO: LoadPost PostService");
+  getPost(): Observable<Post[]> {
+    return this.httpClient.get<Post[]>(`${environment.apiUrl}/posts`);
   }
 }
-
-
-/**
- * book$: Observable<Book> = this.activatedRoute.params.pipe(
-    take(1),
-    map((params) => params?.id),
-    tap((id) => (this.isNew = id === 'new')),
-    filter((id) => id !== 'new'),
-    switchMap((id) => this.bookService.getBookDetail(id)),
-    tap((book) => {
-      this.book = book;
-      this.form.patchValue(book);
-    })
-  );
- */
