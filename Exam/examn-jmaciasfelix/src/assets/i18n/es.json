@@ -1,39 +1,33 @@
 {
-  "LOGIN": {
-    "TITLE": "Acceso a encuestas",
-    "FIELDS": {
-      "EMAIL": "Email",
-      "PASSWORD": "Password"
+    "LOGIN": {
+      "TITLE": "Acceso a encuestas",
+      "FIELDS": {
+        "EMAIL": "Email",
+        "PASSWORD": "Password"
+      },
+      "BUTTONS": {
+        "ACCESS": "Acceder"
+      },
+      "ERRORS": {
+        "AUTH": "Las credenciales introducidas no son correctas."
+      }
     },
+    "SURVEYS_LIST": {
+      "TITLE": "Encuestas disponibles",
+      "ALERT_TITLE": "Confirm Logout.",
+      "ALERT_DESCRIPTION": "Do you want to close the session?"
+    },
+    "SURVEY": {},
     "BUTTONS": {
-      "ACCESS": "Acceder"
+      "ACCEPT": "Aceptar",
+      "CANCEL": "Cancelar",
+      "ADD": "Añadir",
+      "UPDATE": "Actualizar",
+      "DELETE": "Eliminar"
     },
     "ERRORS": {
-      "AUTH": "Las credenciales introducidas no son correctas."
+      "LOADING_DATA": "Ha ocurrido un problema cargando la información. Por favor, vuelva a intentarlo.",
+      "NOT_CONTROLLED": "Ha ocurrido un problema no controlado. Por favor, póngase en contacto con el administrador."
     }
-  },
-  "SURVEYS_LIST": {
-    "TITLE": "Encuestas disponibles",
-    "ALERT_TITLE": "Confimar cerrar sesión.",
-    "ALERT_DESCRIPTION": "¿Deseas cerrar la sesión.?"
-  },
-  "SURVEY": {},
-  "BUTTONS": {
-    "ACCEPT": "Aceptar",
-    "CANCEL": "Cancelar",
-    "ADD": "Añadir",
-    "UPDATE": "Actualizar",
-    "DELETE": "Eliminar"
-  },
-  "ERRORS": {
-    "LOADING_DATA": "Ha ocurrido un problema cargando la información. Por favor, vuelva a intentarlo.",
-    "NOT_CONTROLLED": "Ha ocurrido un problema no controlado. Por favor, póngase en contacto con el administrador."
-  },
-  "SUCCESS": {
-    "LOADING_DATA": "Se han cargado los datos correctamente",
-    "AUTHENTICATION": "Se ha autenticado correctamente",
-    "LOGOUT": "Ha cerrado sesión correctamente",
-    "RETRACT": "Se ha borrado correctamente el voto."
-  },
-  "LOADING": "Cargando, espere..."
-}
+  }
+  

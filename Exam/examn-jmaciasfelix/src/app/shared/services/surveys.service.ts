@@ -35,16 +35,6 @@ export class SurveysService {
     );
   }
 
-  public deleteVote(idSurvey: number): Observable<Object> {
-    console.log("borrar "+idSurvey)
-    return this.http.delete<Object>(
-      `${environment.apiUrl}/survey/${idSurvey}`,
-      {
-        headers: this.authService.getAuthHeaders(),
-      }
-    );
-  }
-
   public getSurveysUpdates(): Subject<SurveyBase[]> {
     return webSocket(`${environment.sockectUrl}/votes`);
   }

@@ -39,8 +39,7 @@ export class SurveysListPage {
       () => {
         this.authService.logout();
         this.toast.presentToast(
-          this.translateService.instant("ERRORS.LOADING_DATA"),
-          "danger"
+          this.translateService.instant("ERRORS.LOADING_DATA", "danger")
         );
         this.router.navigate(["/login"]);
       }
