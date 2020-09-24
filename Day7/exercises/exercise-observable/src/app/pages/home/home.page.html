@@ -17,9 +17,9 @@
       <ion-button color="secundary" (click)="loadPosts()">{{"BUTTONS.LOAD"| translate}}</ion-button>
       <ion-button color="danger" (click)="clearList()">{{"BUTTONS.CLEAR"| translate}}</ion-button>
     </ion-list-header>
-    <ion-item>
+    <ion-item *ngFor="let msg of messages">
       <ion-label>
-        <h2>I got you babe</h2>
+        <h2>{{msg}}</h2>
       </ion-label>
     </ion-item>
   </ion-list>
