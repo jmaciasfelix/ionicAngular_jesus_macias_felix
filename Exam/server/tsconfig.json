@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es2017",
+    "outDir": "dist",
+    "baseUrl": "src",
+    "paths": {
+      "@encuestas/app": ["app"],
+      "@encuestas/auth": ["app/auth"],
+      "@encuestas/crypto": ["app/crypto"],
+      "@encuestas/data": ["app/data"],
+      "@encuestas/survey": ["app/survey"]
+    }
+  },
+  "exclude": ["node_modules", "dist"]
+}
