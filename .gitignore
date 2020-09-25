@@ -30,5 +30,4 @@ npm-debug.log*
 /plugins
 /www
 /mocks
-/Exam/server
-/Exam/Enunciado.docx
+/Exam/exam-app-base/node_modules
