@@ -30,4 +30,5 @@ npm-debug.log*
 /plugins
 /www
 /mocks
-/Exam/examn-jmaciasfelix
+/Exam/server
+/Exam/Enunciado.docx
