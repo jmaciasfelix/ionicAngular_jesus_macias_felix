@@ -30,5 +30,9 @@ npm-debug.log*
 /plugins
 /www
 /mocks
+<<<<<<< HEAD
 /Exam/examn-jmaciasfelix
 /Exam/server
+=======
+/Exam/exam-app-base/node_modules
+>>>>>>> dev
