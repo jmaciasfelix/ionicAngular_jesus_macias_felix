@@ -1,7 +1,11 @@
+//angular
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
+// rxjs
+import { Observable } from "rxjs";
+//environment
+import { environment } from "src/environments/environment";
+//models
 import { Brands } from "../models";
 
 @Injectable({
@@ -9,12 +13,17 @@ import { Brands } from "../models";
 })
 export class BrandService {
   public brands: Brands[];
+  /**
+   * Contructor
+   * @param httpClient HttpClient angular
+   */
   constructor(private httpClient: HttpClient) {}
 
-  /** TODO
-   *  
+  /**
+   *  Observable to get brands
+   * @return Observable Brands[]
    */
-  getBrands(): Observable<Brands[]>{
+  getBrands(): Observable<Brands[]> {
     return this.httpClient.get<Brands[]>(`${environment.apiUrl}/brands`);
   }
 }
