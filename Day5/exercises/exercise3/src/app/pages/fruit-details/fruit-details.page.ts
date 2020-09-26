@@ -6,7 +6,7 @@ import { ActivatedRoute } from "@angular/router";
 import { FruitService } from "../../services";
 
 // interfaces
-import { Fruit } from "../../interfaces";
+import { Fruit } from "../../models";
 import { NavController, ToastController } from "@ionic/angular";
 
 @Component({

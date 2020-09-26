@@ -2,7 +2,7 @@
 import { Component, OnInit } from "@angular/core";
 import { State } from "src/app/models";
 //interface
-import { Fruit } from "../../interfaces";
+import { Fruit } from "../../models";
 //services
 import { FruitService } from "../../services";
 @Component({

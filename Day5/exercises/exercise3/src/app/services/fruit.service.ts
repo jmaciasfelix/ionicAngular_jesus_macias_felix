@@ -2,7 +2,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 //interfaces
-import { Fruit } from "../interfaces";
+import { Fruit } from "../models";
 //Rxjs
 import { Observable } from "rxjs";
 //environment
