@@ -1,9 +1,15 @@
+//angular
 import { Component } from "@angular/core";
-import { PostService, BrandService } from "src/app/shared/services";
-import { map, switchMap, take, tap, filter } from "rxjs/operators";
+
+//RxJS
+import { map, take } from "rxjs/operators";
 import { Observable, zip } from "rxjs";
+
+//services
+import { PostService, BrandService } from "src/app/shared/services";
+
+//models
 import { Post, Brands } from "src/app/shared/models";
-import { element } from "protractor";
 
 @Component({
   selector: "app-home",
@@ -12,14 +18,18 @@ import { element } from "protractor";
 })
 export class HomePage {
   public messages: string[];
-
+  /**
+   * Contructor
+   * @param postService Service post to get posts
+   * @param brandService Service brand to get brands
+   */
   constructor(
     private postService: PostService,
     private brandService: BrandService
   ) {}
 
-  /** TODO
-   *
+  /**
+   * Get the posts and the list of brands
    */
   public loadPosts(): void {
     const post$: Observable<Post[]> = this.postService.getPost();
@@ -38,6 +48,10 @@ export class HomePage {
       );
   }
 
+  /**
+   * Return messages hiding restrictive marks
+   * @param data Object with the messages and the list of restrictive marks
+   */
   private processMsg(data: object): string[] {
     const arrayNew: string[] = [];
     const arrayMsg: string[] = data[0].map(({ message }) => message);
@@ -55,7 +69,9 @@ export class HomePage {
         }
       });
       if (isRestrict) {
-        arrayNew.push(msg.replace(brandRestrict, "******"));
+        arrayNew.push(
+          msg.replace(brandRestrict, this.transformAsterisk(brandRestrict))
+        );
       } else {
         arrayNew.push(msg);
       }
@@ -64,11 +80,22 @@ export class HomePage {
     return arrayNew;
   }
 
-  /** TODO
-   *
+  /**
+   * Clear the message list
    */
   public clearList(): void {
-    console.log("TODO: clearList");
     this.messages = [];
+  }
+  /**
+   * Transform a string to asterisk
+   * @param msg Brand restrict
+   * @return String asterisk with same length that msg argument
+   */
+  public transformAsterisk(msg: string): string {
+    let asterisk: string = "";
+    for (let index = 0; index < msg.length; index++) {
+      asterisk += "*";
+    }
+    return asterisk;
   }
 }
