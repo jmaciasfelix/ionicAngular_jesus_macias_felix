@@ -6,5 +6,10 @@
   "BUTTONS": {
     "CLEAR": "Clear",
     "LOAD": "Load"
+  },
+  "TOAST": {
+    "SUCCESS": "The data has been loaded successfully",
+    "ERROR": "An error has occurred, try again",
+    "CLEAR": "Clear"
   }
 }

@@ -6,5 +6,10 @@
   "BUTTONS": {
     "CLEAR": "Limpiar",
     "LOAD": "Cargar"
+  },
+  "TOAST": {
+    "SUCCESS": "Los datos se han cargado correctamente",
+    "ERROR": "Ha ocurrido un error, intentelo de nuevo.",
+    "CLEAR": "Se borra la lista"
   }
 }

@@ -1,6 +1,9 @@
 //angular
 import { Component } from "@angular/core";
 
+//ionic
+import { ToastController } from "@ionic/angular";
+
 //RxJS
 import { map, take } from "rxjs/operators";
 import { Observable, zip } from "rxjs";
@@ -11,6 +14,9 @@ import { PostService, BrandService } from "src/app/shared/services";
 //models
 import { Post, Brands } from "src/app/shared/models";
 
+//translate
+import { TranslateService } from "@ngx-translate/core";
+
 @Component({
   selector: "app-home",
   templateUrl: "home.page.html",
@@ -18,14 +24,19 @@ import { Post, Brands } from "src/app/shared/models";
 })
 export class HomePage {
   public messages: string[];
+  public isLoaded: boolean = true;
   /**
    * Contructor
    * @param postService Service post to get posts
    * @param brandService Service brand to get brands
+   * @param toastController Toast controler ionic
+   * @param translateService Translate service angular
    */
   constructor(
     private postService: PostService,
-    private brandService: BrandService
+    private brandService: BrandService,
+    public toastController: ToastController,
+    private translateService: TranslateService
   ) {}
 
   /**
@@ -34,6 +45,7 @@ export class HomePage {
   public loadPosts(): void {
     const post$: Observable<Post[]> = this.postService.getPost();
     const brand$: Observable<Brands[]> = this.brandService.getBrands();
+    this.isLoaded = false;
 
     zip(post$, brand$)
       .pipe(
@@ -43,8 +55,19 @@ export class HomePage {
       .subscribe(
         (messages) => {
           this.messages = messages;
+          this.isLoaded = true;
+          this.presentToast(
+            this.translateService.instant("TOAST.SUCCESS"),
+            "success"
+          );
         },
-        (error) => console.log(error)
+        () => {
+          this.presentToast(
+            this.translateService.instant("TOAST.SUCCESS"),
+            "danger"
+          );
+          this.isLoaded = true;
+        }
       );
   }
 
@@ -85,6 +108,10 @@ export class HomePage {
    */
   public clearList(): void {
     this.messages = [];
+    this.presentToast(
+      this.translateService.instant("TOAST.CLEAR"),
+      "success"
+    );
   }
   /**
    * Transform a string to asterisk
@@ -97,5 +124,18 @@ export class HomePage {
       asterisk += "*";
     }
     return asterisk;
+  }
+  /**
+   * Show a toast
+   * @param msg Message to display
+   * @param color Color toast
+   */
+  async presentToast(msg: string, color: string) {
+    const toast = await this.toastController.create({
+      message: msg,
+      color: color,
+      duration: 2000,
+    });
+    toast.present();
   }
 }
