@@ -7,6 +7,7 @@ import { FruitService } from "../../services";
 
 // interfaces
 import { Fruit } from "../../interfaces";
+import { NavController, ToastController } from "@ionic/angular";
 
 @Component({
   selector: "app-fruit-details",
@@ -15,6 +16,7 @@ import { Fruit } from "../../interfaces";
 })
 export class FruitDetailsPage implements OnInit {
   public fruit: Fruit;
+  public isLoaded: boolean = false;
 
   /**
    * @param activatedRoute angular activated route
@@ -22,7 +24,9 @@ export class FruitDetailsPage implements OnInit {
    */
   constructor(
     private readonly activatedRoute: ActivatedRoute,
-    private readonly fruitService: FruitService
+    private readonly fruitService: FruitService,
+    private readonly navController: NavController,
+    private toastController: ToastController
   ) {}
 
   /**
@@ -31,8 +35,22 @@ export class FruitDetailsPage implements OnInit {
   public ngOnInit(): void {
     const nameFruit = this.activatedRoute.snapshot.paramMap.get("id");
     this.fruitService.getFruit(nameFruit).subscribe(
-      fruit => this.fruit = fruit,
-      ()=> console.log("Error get one fruit")
+      (fruit) => {
+        this.fruit = fruit;
+        this.isLoaded = true;
+      },
+      () => {
+        this.navController.navigateForward(["/"]);
+        this.toastController;
+      }
     );
+  }
+  async presentToast() {
+    const toast = await this.toastController.create({
+      message: "An error has occurred, please try again",
+      color: "danger",
+      duration: 2000,
+    });
+    toast.present();
   }
 }

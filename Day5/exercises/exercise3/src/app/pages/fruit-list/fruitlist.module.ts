@@ -10,7 +10,9 @@ import { FruitListPage } from "./fruitlist.page";
 import { ExpandableContentModule } from "src/app/components";
 //routing
 import { FruitListPageRoutingModule } from "./fruitlist-routing.module";
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from "@angular/common/http";
+//module
+import { LoadingFeedbackModule } from "src/app/components/loading-feedback/loading-feedback.module";
 
 @NgModule({
   imports: [
@@ -19,7 +21,8 @@ import { HttpClientModule } from '@angular/common/http';
     IonicModule,
     FruitListPageRoutingModule,
     ExpandableContentModule,
-    HttpClientModule
+    HttpClientModule,
+    LoadingFeedbackModule,
   ],
   declarations: [FruitListPage],
   exports: [FruitListPage],

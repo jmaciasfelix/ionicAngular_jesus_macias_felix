@@ -1,5 +1,6 @@
 //angular
 import { Component, OnInit } from "@angular/core";
+import { State } from "src/app/models";
 //interface
 import { Fruit } from "../../interfaces";
 //services
@@ -10,6 +11,7 @@ import { FruitService } from "../../services";
   styleUrls: ["./fruitlist.page.scss"],
 })
 export class FruitListPage implements OnInit {
+  public state: State.LOADING | State.LOADED | State.ERROR = State.LOADING;
   public fruits: Fruit[];
   public folder: string;
   public numElementExpandable: number;
@@ -26,10 +28,14 @@ export class FruitListPage implements OnInit {
    */
   ngOnInit() {
     this.numElementExpandable = 0;
-    this.fruitService.getListFruit().subscribe(
-      (listFruit) => (this.fruits = listFruit),
-      () => console.log("ERROR")
-    );
+  }
+
+  /**
+   * ion View Will Enter ionic lyfe cicle
+   */
+  ionViewWillEnter() {
+    this.state = State.LOADING;
+    this.getListFruit();
   }
   /**
    * Function that calculates the number of expanded elements.
@@ -37,5 +43,15 @@ export class FruitListPage implements OnInit {
    */
   expandableContentChanged(isHidden: boolean): void {
     isHidden ? this.numElementExpandable-- : this.numElementExpandable++;
+  }
+
+  public getListFruit() {
+    this.fruitService.getListFruit().subscribe(
+      (listFruit) => {
+        this.fruits = listFruit;
+        this.state = State.LOADED;
+      },
+      () => (this.state = State.ERROR)
+    );
   }
 }

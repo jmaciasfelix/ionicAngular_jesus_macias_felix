@@ -7,11 +7,13 @@
   </ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true">
-  <div>
-    <app-expandable-content
-      *ngFor="let fruit of fruits; let i = index"
-      [fruit]="fruit"
-    >
-    </app-expandable-content>
-  </div>
+  <app-loading-feedback [state]="state" (retryPressed)="getListFruit()">
+    <div>
+      <app-expandable-content
+        *ngFor="let fruit of fruits; let i = index"
+        [fruit]="fruit"
+      >
+      </app-expandable-content>
+    </div>
+  </app-loading-feedback>
 </ion-content>
