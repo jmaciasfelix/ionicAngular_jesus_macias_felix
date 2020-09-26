@@ -29,7 +29,10 @@ export class FruitDetailsPage implements OnInit {
    * fired on component initialization
    */
   public ngOnInit(): void {
-    const nameFruit = this.activatedRoute.snapshot.paramMap.get("name");
-    this.fruit = this.fruitService.getFruit(nameFruit);
+    const nameFruit = this.activatedRoute.snapshot.paramMap.get("id");
+    this.fruitService.getFruit(nameFruit).subscribe(
+      fruit => this.fruit = fruit,
+      ()=> console.log("Error get one fruit")
+    );
   }
 }

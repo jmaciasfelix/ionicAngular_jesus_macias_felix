@@ -19,14 +19,17 @@ export class FruitListPage implements OnInit {
    *
    * @param fruitService fruit service
    */
-  constructor( private readonly fruitService: FruitService) {}
+  constructor(private readonly fruitService: FruitService) {}
 
   /**
    * Initialize the page fruitlist
    */
   ngOnInit() {
     this.numElementExpandable = 0;
-    this.fruits = this.fruitService.getListFruit();
+    this.fruitService.getListFruit().subscribe(
+      (listFruit) => (this.fruits = listFruit),
+      () => console.log("ERROR")
+    );
   }
   /**
    * Function that calculates the number of expanded elements.

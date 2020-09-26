@@ -36,6 +36,6 @@ export class ExpandableContentComponent implements OnInit {
    * fired when user clicks on fruit
    */
   public fruitPressed():void {
-    this.navController.navigateForward(["/fruit", this.fruit.name]);
+    this.navController.navigateForward(["/fruit", this.fruit.id]);
   }
 }

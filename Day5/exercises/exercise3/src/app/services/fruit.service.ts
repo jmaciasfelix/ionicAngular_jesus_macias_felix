@@ -1,86 +1,35 @@
 // angular
 import { Injectable } from "@angular/core";
-
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 // interfaces
 import { Fruit } from "../interfaces";
+//Rxjs
+import { Observable } from "rxjs";
+//environment
+import { environment } from "src/environments/environment";
 
 @Injectable({
   providedIn: "root",
 })
 export class FruitService {
-  private readonly fruits: Fruit[] = [
-    {
-      id: 1,
-      name: "Apple",
-      image: "apple.png",
-      description:
-        "The usually round red, green, or yellow fruit of a small tree of the rose family.",
-    },
-    {
-      id: 2,
-      name: "Orange",
-      image: "orange.png",
-      description:
-        "A rounded, reddish yellow, bitter or sweet citrus fruit that can be eaten.",
-    },
-    {
-      id: 3,
-      name: "Lemon",
-      image: "lemon.png",
-      description: "The yellowish, acid fruit of a subtropical citrus tree.",
-    },
-    {
-      id: 4,
-      name: "Pear",
-      image: "pear.png",
-      description: "The rounded fruit of a tree of the rose family.",
-    },
-    {
-      id: 5,
-      name: "Strawberry",
-      image: "strawberry.png",
-      description:
-        "The fleshy red fruit of a stemless plant belonging to the rose family.",
-    },
-    {
-      id: 6,
-      name: "Pineapple",
-      image: "pineapple.png",
-      description:
-        "A tropical plant having a short stem and rigid, spiny leaves.",
-    },
-    {
-      id: 7,
-      name: "Watermelon",
-      image: "watermelon.png",
-      description:
-        "A large melon with a hard, green rind and sweet, juicy, usually red pulp.",
-    },
-    {
-      id: 8,
-      name: "Grapes",
-      image: "grapes.png",
-      description:
-        "The smooth-skinned, green or purple fruit that grows in clusters on vines, may be eaten, and is used to make wine.",
-    },
-  ];
-
   /**
-   * get all fruits
-   *
-   * @returns array with fruits
+   * Constructor
+   * @param httpClient HttpClient Angular
    */
-  public getListFruit(): Fruit[] {
-    return this.fruits;
+  constructor(private httpClient: HttpClient) {}
+
+  public getListFruit(): Observable<Fruit[]> {
+    return this.httpClient.get<Fruit[]>(`${environment.apiUrl}/fruits`);
   }
-
-  /**
-   * get one fruit
-   *
-   * @param nameFruit fruit name
-   * @returns {Fruit} a fruit
-   */
-  public getFruit(nameFruit: string): Fruit {
-    return this.fruits.find(fruit => fruit.name === nameFruit);
+  public getFruit(id: string): Observable<Fruit> {
+    return this.httpClient.get<Fruit>(`${environment.apiUrl}/fruits/${id}`);
+  }
+  public updateFruit(fruit: Fruit): Observable<any> {
+    const body = fruit;
+    const url = `${environment.apiUrl}/fruits/1`;
+    const headers = new HttpHeaders({
+      "Content-Type": "application/json; charset=utf-8",
+    });
+    return this.httpClient.patch(url, body, { headers: headers });
   }
 }

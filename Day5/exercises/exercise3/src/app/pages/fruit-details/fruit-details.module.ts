@@ -8,6 +8,7 @@ import { IonicModule } from "@ionic/angular";
 import { FruitDetailsPageRoutingModule } from "./fruit-details-routing.module";
 //pages
 import { FruitDetailsPage } from "./fruit-details.page";
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { FruitDetailsPage } from "./fruit-details.page";
     FormsModule,
     IonicModule,
     FruitDetailsPageRoutingModule,
+    HttpClientModule
   ],
   declarations: [FruitDetailsPage],
 })

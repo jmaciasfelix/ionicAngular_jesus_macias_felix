@@ -10,6 +10,7 @@ import { FruitListPage } from "./fruitlist.page";
 import { ExpandableContentModule } from "src/app/components";
 //routing
 import { FruitListPageRoutingModule } from "./fruitlist-routing.module";
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
@@ -18,6 +19,7 @@ import { FruitListPageRoutingModule } from "./fruitlist-routing.module";
     IonicModule,
     FruitListPageRoutingModule,
     ExpandableContentModule,
+    HttpClientModule
   ],
   declarations: [FruitListPage],
   exports: [FruitListPage],
