@@ -1,7 +1,7 @@
-// angular
+//angular
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-// interfaces
+//interfaces
 import { Fruit } from "../interfaces";
 //Rxjs
 import { Observable } from "rxjs";
@@ -18,12 +18,25 @@ export class FruitService {
    */
   constructor(private httpClient: HttpClient) {}
 
+  /**
+   * Get list of fruit from DB
+   * @returns Observable Fruit[] with list fruits
+   */
   public getListFruit(): Observable<Fruit[]> {
     return this.httpClient.get<Fruit[]>(`${environment.apiUrl}/fruits`);
   }
+  /**
+   * Get a fruit by id
+   * @param id Id fruit
+   * @returns Observable Fruit
+   */
   public getFruit(id: string): Observable<Fruit> {
     return this.httpClient.get<Fruit>(`${environment.apiUrl}/fruits/${id}`);
   }
+  /**
+   * Update the description of Fruit from DB
+   * @param fruit Fruit to update
+   */
   public updateFruit(fruit: Fruit): Observable<any> {
     const body = fruit;
     const url = `${environment.apiUrl}/fruits/${fruit.id}`;

@@ -21,6 +21,8 @@ export class FruitDetailsPage implements OnInit {
   /**
    * @param activatedRoute angular activated route
    * @param fruitService fruit service
+   * @param navController NavController angular
+   *  @param toastController ToastController angular
    */
   constructor(
     private readonly activatedRoute: ActivatedRoute,
@@ -41,23 +43,33 @@ export class FruitDetailsPage implements OnInit {
       },
       () => {
         this.navController.navigateForward(["/"]);
-        this.toastController;
+        this.presentToast();
       }
     );
   }
-  async presentToast() {
+  /**
+   * Show a toast for 2 seconds
+   * @param msg Message displayed on the toast
+   * @param color Toast color
+   */
+  async presentToast(
+    msg: string = "An error has occurred, please try again",
+    color: string = "danger"
+  ) {
     const toast = await this.toastController.create({
-      message: "An error has occurred, please try again",
-      color: "danger",
+      message: msg,
+      color: color,
       duration: 2000,
     });
     toast.present();
   }
-
-  public changeDescription() {
+  /**
+   * Change description of fruit
+   */
+  public changeDescription(): void {
     this.fruitService.updateFruit(this.fruit).subscribe(
-      (fruit) => console.log(fruit),
-      (error) => console.log(error)
+      () => this.presentToast("Has been successfully modified", "success"),
+      () => this.presentToast()
     );
   }
 }

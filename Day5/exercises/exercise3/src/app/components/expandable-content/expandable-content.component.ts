@@ -2,8 +2,8 @@
 import { Component, OnInit, Input } from "@angular/core";
 // ionic
 import { NavController } from "@ionic/angular";
-//interfaces
-import { Fruit } from "src/app/interfaces";
+//models
+import { Fruit } from "src/app/models";
 
 @Component({
   selector: "app-expandable-content",

@@ -13,7 +13,6 @@ import { FruitService } from "../../services";
 export class FruitListPage implements OnInit {
   public state: State.LOADING | State.LOADED | State.ERROR = State.LOADING;
   public fruits: Fruit[];
-  public folder: string;
   public numElementExpandable: number;
 
   /**
@@ -37,6 +36,7 @@ export class FruitListPage implements OnInit {
     this.state = State.LOADING;
     this.getListFruit();
   }
+
   /**
    * Function that calculates the number of expanded elements.
    * @param isHidden Variable that indicates if an element is hidden (true) or visible (false)
@@ -45,7 +45,10 @@ export class FruitListPage implements OnInit {
     isHidden ? this.numElementExpandable-- : this.numElementExpandable++;
   }
 
-  public getListFruit() {
+  /**
+   * Get fruit list from database
+   */
+  public getListFruit(): void {
     this.fruitService.getListFruit().subscribe(
       (listFruit) => {
         this.fruits = listFruit;

@@ -1,3 +1,4 @@
+//enum state
 export enum State {
     LOADING = "loading",
     LOADED = "loaded",
