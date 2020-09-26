@@ -20,7 +20,7 @@ export class BookService {
   }
 
   updateBook(book: Book): Observable<Book> {
-    return this.httpClient.patch<Book>(`${environment.apiUrl}/books/${book.id}`, book);
+    return this.httpClient.put<Book>(`${environment.apiUrl}/books/${book.id}`, book);
   }
 
   deleteBook(id: number): Observable<Book> {
