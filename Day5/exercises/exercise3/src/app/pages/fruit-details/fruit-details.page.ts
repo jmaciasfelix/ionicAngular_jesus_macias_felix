@@ -53,4 +53,11 @@ export class FruitDetailsPage implements OnInit {
     });
     toast.present();
   }
+
+  public changeDescription() {
+    this.fruitService.updateFruit(this.fruit).subscribe(
+      (fruit) => console.log(fruit),
+      (error) => console.log(error)
+    );
+  }
 }

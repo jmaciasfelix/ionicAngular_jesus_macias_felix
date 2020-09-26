@@ -26,10 +26,10 @@ export class FruitService {
   }
   public updateFruit(fruit: Fruit): Observable<any> {
     const body = fruit;
-    const url = `${environment.apiUrl}/fruits/1`;
+    const url = `${environment.apiUrl}/fruits/${fruit.id}`;
     const headers = new HttpHeaders({
       "Content-Type": "application/json; charset=utf-8",
     });
-    return this.httpClient.patch(url, body, { headers: headers });
+    return this.httpClient.put(url, body, { headers: headers });
   }
 }

@@ -17,7 +17,12 @@
         </ion-row>
         <ion-row>
           <ion-col>
-            <p>{{ fruit.description }}</p>
+            <p>Description</p>
+            <ion-item>
+              <ion-textarea autoGrow="true" [(ngModel)]="fruit.description">
+              </ion-textarea>
+            </ion-item>
+            <ion-button expand="full" (click)="changeDescription()">Change description</ion-button>
           </ion-col>
         </ion-row>
       </ion-grid>
