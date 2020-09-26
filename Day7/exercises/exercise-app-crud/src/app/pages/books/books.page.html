@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title> {{ 'BOOKS_PAGE.TITLE' | translate }}</ion-title>
+    <ion-icon slot="end" name="add" [routerLink]="'/books/new'" class="icon-toolbar"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="loadBooks($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <app-loading-feedback [state]="state" (retryPressed)="loadBooks()">
+    <ion-list>
+      <ion-item *ngFor="let book of books" [routerLink]="'/books/' + book.id">
+        <ion-grid>
+          <ion-row><ion-label class="book-title">{{ book.title }}</ion-label></ion-row>
+          <ion-row><ion-label>{{ book.language }}</ion-label></ion-row>
+        </ion-grid>
+      </ion-item>
+    </ion-list>
+  </app-loading-feedback>
+</ion-content>

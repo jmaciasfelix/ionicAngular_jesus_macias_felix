@@ -35,5 +35,6 @@ npm-debug.log*
 /explanation-app-subjects-base
 /explanation-app-subjects-curso
 /solutionBooksApp
+/exercises/exercise-app-crud/node_modules
 Guion.docx
 RxJS.pdf

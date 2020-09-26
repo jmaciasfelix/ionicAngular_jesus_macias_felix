@@ -1,0 +1,25 @@
+{
+  "BOOKS_PAGE": {
+    "TITLE": "Books lists"
+  },
+  "BOOKS_DETAIL_PAGE": {
+    "TITLE": "New Book",
+    "FIELDS": {
+      "TITLE": "Title",
+      "LANGUAGE": "Language",
+      "EDITION": "Edition",
+      "PUBLISHER": "Publisher"
+    }
+  },
+  "BUTTONS": {
+    "RETRY": "Retry",
+    "UPDATE": "Actualizar",
+    "INSERT": "Insert"
+  },
+  "MSGS": {
+    "OPERATION_OK": "Operation ended successfully"
+  },
+  "ERRORS": {
+    "LOADING": "Error loading data"
+  }
+}

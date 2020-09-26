@@ -1,0 +1,46 @@
+<ng-container *ngIf="book$ | async"></ng-container>
+<ng-container *ngIf="book || isNew; else loading">
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+      <ion-title> {{ !isNew ? book.title : ('BOOKS_DETAIL_PAGE.TITLE' | translate) }}</ion-title>
+      <ion-icon *ngIf="!isNew" slot="end" name="trash" (click)="deleteBook()" class="icon-toolbar"></ion-icon>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content class="ion-padding">
+    <form [formGroup]="form" (submit)="submitForm()">
+      <ion-item>
+        <ion-label position="stacked">{{ 'BOOKS_DETAIL_PAGE.FIELDS.TITLE' | translate}}</ion-label>
+        <ion-input formControlName="title" [disabled]="state === 'loading'"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">{{ 'BOOKS_DETAIL_PAGE.FIELDS.LANGUAGE' | translate}}</ion-label>
+        <ion-input formControlName="language" [disabled]="state === 'loading'"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">{{ 'BOOKS_DETAIL_PAGE.FIELDS.EDITION' | translate}}</ion-label>
+        <ion-input formControlName="edition" [disabled]="state === 'loading'"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">{{ 'BOOKS_DETAIL_PAGE.FIELDS.PUBLISHER' | translate}}</ion-label>
+        <ion-input formControlName="publisher" [disabled]="state === 'loading'"></ion-input>
+      </ion-item>
+      <div class="ion-margin ion-text-right">
+        <app-loading-feedback [state]="state" (retryPressed)="submitForm()">
+          <ion-button type="submit" [disabled]="form.invalid"
+            >{{ (isNew ? 'BUTTONS.INSERT' : 'BUTTONS.UPDATE') | translate }}</ion-button
+          >
+        </app-loading-feedback>
+      </div>
+    </form>
+  </ion-content>
+</ng-container>
+<ng-template #loading>
+  <div class="ion-margin ion-text-center">
+    <ion-spinner></ion-spinner>
+  </div>
+</ng-template>
+
