@@ -1,14 +1,14 @@
-import { Component } from '@angular/core';
-import { BookService } from 'src/app/shared/services/book.service';
-import { Book } from 'src/app/shared/models';
+import { Component } from "@angular/core";
+import { BookService } from "src/app/shared/services/book.service";
+import { Book } from "src/app/shared/models";
 
 @Component({
-  selector: 'app-books',
-  templateUrl: './books.page.html',
-  styleUrls: ['./books.page.scss']
+  selector: "app-books",
+  templateUrl: "./books.page.html",
+  styleUrls: ["./books.page.scss"],
 })
 export class BooksPage {
-  state = 'loading';
+  state = "loading";
   books: Book[];
 
   constructor(private bookService: BookService) {}
@@ -18,18 +18,31 @@ export class BooksPage {
   }
 
   loadBooks(event?) {
-    this.state = 'loading';
+    this.state = "loading";
     this.bookService.getBooks().subscribe(
       (books) => {
         this.books = books;
-        this.state = 'loaded';
+        this.state = "loaded";
 
         event?.target?.complete();
       },
       (error) => {
-        this.state = 'error';
+        this.state = "error";
         console.log(error);
       }
     );
+  }
+
+  deleteBook(idBook: string) {
+    console.log(idBook);
+     this.state = 'loading';
+     this.bookService.deleteBook(parseInt(idBook,10)).subscribe(
+       () => {
+         this.ionViewWillEnter()
+       },
+       () => {
+         this.state = 'error';
+       }
+     );
   }
 }
