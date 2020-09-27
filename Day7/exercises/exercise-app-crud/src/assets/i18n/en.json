@@ -17,9 +17,11 @@
     "INSERT": "Insert"
   },
   "MSGS": {
-    "OPERATION_OK": "Operation ended successfully"
+    "OPERATION_OK": "Operation ended successfully",
+    "DELETING_OK": "The book has been successfully removed."
   },
   "ERRORS": {
-    "LOADING": "Error loading data"
+    "LOADING": "Error loading data",
+    "DELETING": "An error occurred while deleting the book."
   }
 }
